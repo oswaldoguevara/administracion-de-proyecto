@@ -786,6 +786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ff2bf028c72c14d9b38b1702eac66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuPrincipal: {fileID: 1736291429}
+  unirsePartida: {fileID: 1371676041}
+  crearPartida: {fileID: 721961742}
 --- !u!4 &570508627
 Transform:
   m_ObjectHideFlags: 0
@@ -1901,14 +1904,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 570508626}
-        m_MethodName: cambiarMenu
+        m_MethodName: cambiarEscena
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: iniciar
+          m_StringArgument: juego
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
