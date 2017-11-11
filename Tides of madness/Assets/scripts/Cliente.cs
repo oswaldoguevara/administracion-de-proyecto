@@ -31,14 +31,17 @@ public class Cliente : MonoBehaviour {
         Accion mensaje= mensajeRed.ReadMessage<Accion>();
         if (mensaje.id==-1)
         {
-            FindObjectOfType<CambiarMenu>().cambiarEscena("iniciar");
+            FindObjectOfType<CambiarMenu>().cambiarEscena("juego");
         }
-        else
+       else
         {
-            FindObjectOfType<Administrador>().hacerAccion(mensaje);
+            FindObjectOfType<Administrador>().recibirAccion(mensaje);
         }
 
     }
    
-    
+    public void enviarAccion(Accion hacer) //lo envia al servidor
+    {
+        cliente.Send(Accion.TipoMensaje,hacer);
+    }
 }

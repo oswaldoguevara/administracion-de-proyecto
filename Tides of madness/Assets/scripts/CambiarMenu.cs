@@ -37,9 +37,7 @@ public class CambiarMenu : MonoBehaviour {
                 crearPartida.SetActive(true);
 
                 break;
-            case "iniciar":
-                cambiarEscena("juego");
-                break;
+            
             
         }
     }

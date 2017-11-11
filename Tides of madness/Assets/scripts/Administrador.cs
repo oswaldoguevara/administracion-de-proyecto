@@ -33,12 +33,25 @@ public class Administrador : MonoBehaviour
         hijos = ObtenerHijos();
         jalarAjuadores();
 
-
+        //manejador al cliente al servidor
     }
-    public void hacerAccion(Accion hacer)
+  
+  /*  public void hacerAccion(Accion hacer)
     {
-        // realiza accion que recibe del cliente 
+        
         Debug.Log("accion " + hacer);
+    }*/
+
+        public void recibirAccion(Accion recibido)
+    {
+        Carta[] cartas= mazoOponente.GetComponentsInChildren<Carta>();
+        foreach (Carta carta in cartas)
+        {
+            if (carta.id == recibido.id)
+            {
+                carta.transform.SetParent(tableroOponente.transform);
+            }
+        }
     }
 
     public void intercambiarMazos()
@@ -165,6 +178,11 @@ public class Administrador : MonoBehaviour
         carta.GetComponent<Carta>().CambiarSpriteAtras();
         carta.transform.localScale = new Vector2(1.8f, 1.8f); //cambiar scale de la carta
         ultimacarta = objeto;
+        //mandar carta al cliente
+        Accion ac = new Accion();
+        ac.id = ultimacarta.GetComponent<Carta>().id;
+        FindObjectOfType<Cliente>().enviarAccion(ac);
+        
         return true;
 
     }
