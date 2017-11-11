@@ -1393,24 +1393,20 @@ MonoBehaviour:
     type: 2}
   prefabLocura: {fileID: 1167701622828500, guid: 52185532bb702de4c8e8cacc95479c14,
     type: 2}
-  MazoJalar: {fileID: 852969351}
-  ContenedorLocuras: {fileID: 827702037}
-  maGuardar: {fileID: 644239334}
-  maOponente: {fileID: 1264874413}
-  maJugador: {fileID: 1193629289}
-  mazoVacio: []
-  mazoJugador: []
-  mazoOponente: []
-  activarIntercambio: 0
+  locuras: {fileID: 827702037}
   cartas: []
   hijos: []
+  temporalJugadores: []
+  temporalVacio: []
+  temporalOponentes: []
   ultimacarta: {fileID: 0}
   mazoJalar: {fileID: 852969354}
-  mazoJug1: {fileID: 1193629291}
-  mazoJug2: {fileID: 1264874415}
-  mazoTablero1: {fileID: 160059595}
-  mazoTablero2: {fileID: 830974283}
+  mazoJugador: {fileID: 1193629291}
+  mazoOponente: {fileID: 1264874415}
+  tableroJugador: {fileID: 160059595}
+  tableroOponente: {fileID: 830974283}
   mazoDejar: {fileID: 1371753038}
+  mazoVacio: {fileID: 644239336}
   turnoJugador: 1
   ronda: 1
 --- !u!82 &794356676
@@ -2983,7 +2979,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 794356675}
-        m_MethodName: cerrarJuego
+        m_MethodName: intercambiarMazos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

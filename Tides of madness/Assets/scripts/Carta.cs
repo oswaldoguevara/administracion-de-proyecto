@@ -30,7 +30,7 @@ public class Carta : MonoBehaviour
     private void OnMouseDown()
     {
        
-        if (mazos.tipoMazo == Mazos.TipoMazo.mazoJug1)
+        if (mazos.tipoMazo == Mazos.TipoMazo.mazoJugador)
         {
 
 
@@ -66,7 +66,7 @@ public class Carta : MonoBehaviour
     }
     public void OnMouseOver()
     {
-        if (mazos.tipoMazo == Mazos.TipoMazo.mazoJug1)
+        if (mazos.tipoMazo == Mazos.TipoMazo.mazoJugador)
         {
             FindObjectOfType<ManejadorInterfaz>().aparecerPanelCarta(true, texto);
         }

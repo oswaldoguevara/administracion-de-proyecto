@@ -8,25 +8,22 @@ public class Administrador : MonoBehaviour
 
     public GameObject prefabCarta;
     public GameObject prefabLocura;
-    public GameObject MazoJalar;
-    public GameObject ContenedorLocuras;
-    public GameObject maGuardar;
-    public GameObject maOponente;
-    public GameObject maJugador;
-    public GameObject[] mazoVacio;
-    public GameObject[] mazoJugador;
-    public GameObject[] mazoOponente;
-    public bool activarIntercambio = false;
+ 
+    public GameObject locuras;
+   
+    
     public GameObject[] cartas;
     //GUARDA LOS HIJOS
     public GameObject[] hijos;
 
-
+   public GameObject[] temporalJugadores;
+   public GameObject[] temporalVacio;
+   public GameObject[] temporalOponentes;
 
     public GameObject ultimacarta;
 
     //LISTA DE MAZO
-    public Mazos mazoJalar, mazoJug1, mazoJug2, mazoTablero1, mazoTablero2, mazoDejar;
+    public Mazos mazoJalar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoDejar,mazoVacio;
 
     //DATOS PARTIDA
     public bool turnoJugador = true;
@@ -43,16 +40,22 @@ public class Administrador : MonoBehaviour
     }
 
 
-    public void intercambiarMazos(bool actuar)
+    public void intercambiarMazos()
     {
 
         /* mazoVacio = mazoJugador;
           mazoJugador=mazoOponente;
           mazoOponente = mazoVacio;
        */
+
+
+        temporalJugadores = mazoJugador.ObtenerHijos();
+        temporalOponentes = mazoOponente.ObtenerHijos();
+
+        
        
+               
     }
-   
         public void cerrarJuego()
     {
         Application.Quit();
@@ -69,8 +72,8 @@ public class Administrador : MonoBehaviour
             objeto.GetComponent<Carta>().id = i;
             objeto.GetComponent<Carta>().CambiarSpriteAtras();
 
-            objeto.transform.position = MazoJalar.transform.position;
-            objeto.transform.parent = MazoJalar.transform;
+            objeto.transform.position = mazoJalar.transform.position;
+            objeto.transform.parent = mazoJalar.transform;
             id++;
         }
     }
@@ -82,8 +85,8 @@ public class Administrador : MonoBehaviour
             GameObject objeto = Instantiate(prefabLocura);
 
 
-            objeto.transform.position = ContenedorLocuras.transform.position;
-            objeto.transform.parent = ContenedorLocuras.transform;
+            objeto.transform.position = locuras.transform.position;
+            objeto.transform.parent = locuras.transform;
 
 
         }
@@ -116,8 +119,8 @@ public class Administrador : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
 
-            cartas[i].transform.SetParent(mazoJug1.transform);
-            cartas[i].transform.position = mazoJug1.transform.position;
+            cartas[i].transform.SetParent(mazoJugador.transform);
+            cartas[i].transform.position = mazoJugador.transform.position;
             cartas[i].GetComponent<Carta>().CambiarSpriteFrente();
 
 
@@ -130,8 +133,8 @@ public class Administrador : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
 
-            cartas[i].transform.SetParent(mazoJug2.transform);
-            cartas[i].transform.position = mazoJug2.transform.position;
+            cartas[i].transform.SetParent(mazoOponente.transform);
+            cartas[i].transform.position = mazoOponente.transform.position;
             cartas[i].GetComponent<Carta>().CambiarSpriteAtras();
 
         }
@@ -147,7 +150,7 @@ public class Administrador : MonoBehaviour
 
 
         //CAMBIA LA CARTA DEL MAZO JUG A EL MAZO TABLERO
-        objeto.transform.SetParent(mazoTablero1.transform); //cambia el padre, de mazo
+        objeto.transform.SetParent(tableroJugador.transform); //cambia el padre, de mazo
         carta.GetComponent<Carta>().CambiarSpriteAtras();
         carta.transform.localScale = new Vector2(1.8f, 1.8f); //cambiar scale de la carta
         ultimacarta = objeto;
@@ -162,7 +165,7 @@ public class Administrador : MonoBehaviour
 
 
         //CAMBIA LA CARTA DEL MAZO JUG A EL MAZO TABLERO
-        objeto.transform.SetParent(mazoTablero2.transform); //cambia el padre, de mazo
+        objeto.transform.SetParent(tableroOponente.transform); //cambia el padre, de mazo
         carta.transform.localScale = new Vector2(1.8f, 1.8f); //cambiar scale de la carta
 
         return true;

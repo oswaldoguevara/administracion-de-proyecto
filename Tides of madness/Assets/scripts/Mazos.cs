@@ -22,7 +22,7 @@ public class Mazos : MonoBehaviour
 
 
     void Update()
-    {
+    {  //MOVIMIENTO SUAVE DE LAS CARTAS
          int indice = 0;
         
       foreach (GameObject hijo in hijos)
@@ -40,7 +40,7 @@ public class Mazos : MonoBehaviour
 
     public Vector2 ObtenerPosicion(int indice)
     {
-        if (tipoMazo == TipoMazo.mazoJug1)
+        if (tipoMazo == TipoMazo.mazoJugador)
         {   
             return new Vector2(transform.position.x + (separacionx * indice), transform.position.y );
         }
@@ -59,7 +59,7 @@ public class Mazos : MonoBehaviour
         }
 
         return transform.position;
-            }
+}
 
     public GameObject[] ObtenerHijos()
     {
@@ -78,7 +78,6 @@ public class Mazos : MonoBehaviour
   
     private void OnTransformChildrenChanged()
     {
-
         //Obtener los GameObject hijos
         hijos = ObtenerHijos();
 
@@ -88,31 +87,19 @@ public class Mazos : MonoBehaviour
         for (int x = 0; x < hijosCarta.Length; x++)
         {
             hijosCarta[x] = hijos[x].GetComponent<Carta>();
-            hijosCarta[x].mazos = GetComponent<Mazos>();
-            if (hijosCarta[x].seleccionada == true)
-            {
-                
-
-            }
-           
-          
-        }
-                
-
-            
+            hijosCarta[x].mazos = GetComponent<Mazos>();        
+        }         
     }
-
+    
     public void barajar()
     {
         foreach (Transform hijo in transform)
         {
             hijo.SetSiblingIndex(Random.Range(0, transform.childCount - 1));
         }
-
-
-
-    }
-    public enum TipoMazo { mazoJalar, mazoDejar, mazoJug1, mazoOponente, tableroJugador, tableroOponente, mazovacio, locuras }
+  }
+  
+    public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
 }
 
 
