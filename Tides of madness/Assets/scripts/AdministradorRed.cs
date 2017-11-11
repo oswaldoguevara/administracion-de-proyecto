@@ -18,9 +18,9 @@ public class AdministradorRed : MonoBehaviour {
         cliente.ArrancarConexion("localhost",puerto);
     }
 
-    public void configurarComoCliente()  //recibira como parametro lo del textfield de ip del servidor
+    public void configurarComoCliente(string ip)  //recibira como parametro lo del textfield de ip del servidor
     {
        cliente = Instantiate(prefabCliete).GetComponent<Cliente>();
-       cliente.ArrancarConexion("192.168.0.15", puerto);  //LA IP SE OBTIENE DEL TEXTFIELD DE EL PANEL "192.168.0.15"
+       cliente.ArrancarConexion(ip, puerto);  //LA IP SE OBTIENE DEL TEXTFIELD DE EL PANEL "192.168.0.15"
     }
 }

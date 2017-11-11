@@ -35,7 +35,11 @@ public class Administrador : MonoBehaviour
 
 
     }
-
+    public void hacerAccion(Accion hacer)
+    {
+        // realiza accion que recibe del cliente 
+        Debug.Log("accion " + hacer);
+    }
 
     public void intercambiarMazos()
     {

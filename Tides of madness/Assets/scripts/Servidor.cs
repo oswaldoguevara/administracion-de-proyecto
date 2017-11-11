@@ -19,8 +19,10 @@ public class Servidor : MonoBehaviour {
             {
                 Debug.Log("Ya estan los dos jugadores, que inicie el juego");
                 juegoiniciado = true;
-                FindObjectOfType<CambiarMenu>().cambiarMenu("iniciar");
+
+                FindObjectOfType<CambiarMenu>().cambiarEscena("iniciar");
             }
+           
         }
     }
 

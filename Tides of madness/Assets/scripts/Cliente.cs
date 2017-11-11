@@ -15,6 +15,7 @@ public class Cliente : MonoBehaviour {
     {   
         cliente = new NetworkClient();
         cliente.RegisterHandler(MsgType.Connect, conectarse);
+        cliente.RegisterHandler(Accion.TipoMensaje,hacerMovimiento);
         cliente.Connect(ip,puerto);
        
 
@@ -24,4 +25,20 @@ public class Cliente : MonoBehaviour {
     {
         Debug.Log("CONECTADO");
     }
+
+    public void hacerMovimiento(NetworkMessage mensajeRed)
+    {
+        Accion mensaje= mensajeRed.ReadMessage<Accion>();
+        if (mensaje.id==-1)
+        {
+            FindObjectOfType<CambiarMenu>().cambiarEscena("iniciar");
+        }
+        else
+        {
+            FindObjectOfType<Administrador>().hacerAccion(mensaje);
+        }
+
+    }
+   
+    
 }

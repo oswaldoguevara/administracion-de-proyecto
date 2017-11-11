@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Networking;
 
-public class Objeto : MessageBase {
+public class Accion : MessageBase {
 
     public static short TipoMensaje = 80;
     public int id;
