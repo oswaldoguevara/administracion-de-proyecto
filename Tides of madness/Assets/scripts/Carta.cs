@@ -46,6 +46,7 @@ public class Carta : MonoBehaviour
                 {
                     SetSeleccionada(true);
                 }
+                Debug.Log("chale");
             }
         }
         // SIMULADOR PARA LA SELECCION QUE HACE EL OPONENTE
