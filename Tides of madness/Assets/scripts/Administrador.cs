@@ -16,10 +16,7 @@ public class Administrador : MonoBehaviour
     //GUARDA LOS HIJOS
     public GameObject[] hijos;
 
-   public GameObject[] temporalJugadores;
-   public GameObject[] temporalVacio;
-   public GameObject[] temporalOponentes;
-
+ 
     public GameObject ultimacarta;
 
     //LISTA DE MAZO
@@ -43,20 +40,30 @@ public class Administrador : MonoBehaviour
     public void intercambiarMazos()
     {
 
-        /* mazoVacio = mazoJugador;
-          mazoJugador=mazoOponente;
-          mazoOponente = mazoVacio;
-       */
-
-
-        temporalJugadores = mazoJugador.ObtenerHijos();
-        temporalOponentes = mazoOponente.ObtenerHijos();
+   //     temporalJugadores = mazoJugador.ObtenerHijos();
+     //   temporalOponentes = mazoOponente.ObtenerHijos();
 
         
-       
-               
+
+        Carta[] cartasJugador = mazoJugador.GetComponentsInChildren<Carta>();
+        Carta[] cartasOponente = mazoOponente.GetComponentsInChildren<Carta>();
+
+        foreach (Carta hijo in cartasJugador)
+        {
+            hijo.transform.SetParent(mazoOponente.transform);
+            hijo.CambiarSpriteAtras();
+        }
+        foreach (Carta hijo in cartasOponente)
+        {
+            hijo.transform.SetParent(mazoJugador.transform);
+            hijo.CambiarSpriteFrente();
+        }
+
+
+
+
     }
-        public void cerrarJuego()
+    public void cerrarJuego()
     {
         Application.Quit();
     }

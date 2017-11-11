@@ -1396,9 +1396,6 @@ MonoBehaviour:
   locuras: {fileID: 827702037}
   cartas: []
   hijos: []
-  temporalJugadores: []
-  temporalVacio: []
-  temporalOponentes: []
   ultimacarta: {fileID: 0}
   mazoJalar: {fileID: 852969354}
   mazoJugador: {fileID: 1193629291}
@@ -1415,7 +1412,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 794356672}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f80951a6220492e4d9dcdaa1c8f42acd, type: 3}
@@ -1495,7 +1492,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 794356672}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1 &827702037
 GameObject:
   m_ObjectHideFlags: 0

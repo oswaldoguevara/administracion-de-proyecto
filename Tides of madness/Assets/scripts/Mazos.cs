@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mazos : MonoBehaviour
 {
@@ -12,14 +13,16 @@ public class Mazos : MonoBehaviour
     public float separacionx;
     GameObject cartaSeleccionada;
 
+  
 
 
     void Awake()
-    {   
+    {
         hijos = ObtenerHijos();
 
-    }
 
+  
+}
 
     void Update()
     {  //MOVIMIENTO SUAVE DE LAS CARTAS
@@ -98,6 +101,11 @@ public class Mazos : MonoBehaviour
             hijo.SetSiblingIndex(Random.Range(0, transform.childCount - 1));
         }
   }
+
+  
+
+
+
   
     public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
 }
