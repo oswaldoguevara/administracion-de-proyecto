@@ -7,5 +7,7 @@ public class Accion : MessageBase {
     public static short TipoMensaje = 80;
     public int id;
 
+    
+
 }
 
