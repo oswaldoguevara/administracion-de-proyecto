@@ -18,7 +18,7 @@ public class Mazos : MonoBehaviour
     public int totalazul = 0;
     public int totalamarillo = 0;
     public int totalverde = 0;
-    public int totalrojo = 0;
+    public int totalrojo = 7;
     public int totalrosa = 0;
     public int totalocura = 0;
     public int puntos = 0;
@@ -47,7 +47,7 @@ public class Mazos : MonoBehaviour
             contadorjug2(hijo);
         }
 
-
+      
     }
 
     void Update()
@@ -262,6 +262,7 @@ public class Mazos : MonoBehaviour
 
 
         }
+        
 
     }
     public void sumapuntosjug2(GameObject hijo)

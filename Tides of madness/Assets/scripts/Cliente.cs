@@ -29,7 +29,7 @@ public class Cliente : MonoBehaviour {
     public void hacerMovimiento(NetworkMessage mensajeRed)
     {
         Accion mensaje= mensajeRed.ReadMessage<Accion>();
-        if (mensaje.id==-1)
+        if (mensaje.id==-1)//INICIA LA ESCENA JUEGO
         {
             FindObjectOfType<CambiarMenu>().cambiarEscena("juego");
         }
