@@ -13,12 +13,13 @@ public class Mazos : MonoBehaviour
     public float separacionx;
     GameObject cartaSeleccionada;
     public GameObject comodin;
+    public GameObject FinRonda;
 
     //Datos jugador para el contador
     public int totalazul = 0;
     public int totalamarillo = 0;
     public int totalverde = 0;
-    public int totalrojo = 7;
+    public int totalrojo = 0;
     public int totalrosa = 0;
     public int totalocura = 0;
     public int puntos = 0;
@@ -40,14 +41,15 @@ public class Mazos : MonoBehaviour
         {
             sumapuntosjug2(hijo);
             sumapuntos(hijo);
-        }
+            }
         foreach (GameObject hijo in hijos)
         {
             contador(hijo);
             contadorjug2(hijo);
+            
         }
 
-      
+
     }
 
     void Update()
@@ -109,6 +111,7 @@ public class Mazos : MonoBehaviour
     {
         //Obtener los GameObject hijos
         hijos = ObtenerHijos();
+        
 
         //Obtener los componentes Carta de los GameObject hijos
 
@@ -120,13 +123,13 @@ public class Mazos : MonoBehaviour
         }         
     }
     
-  /*  public void barajar()
+ public void barajar()
     {
         foreach (Transform hijo in transform)
         {
             hijo.SetSiblingIndex(Random.Range(0, transform.childCount - 1));
         }
-  }*/
+  }
 
   
 
@@ -134,6 +137,8 @@ public class Mazos : MonoBehaviour
 
   
     public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
+
+
 
     //carta comodin
     public void valorComodin(string daenerys)
@@ -716,7 +721,21 @@ public class Mazos : MonoBehaviour
 
         }
     }
-
+    //final de ronda agregar a suma puntos
+    public void finRonda(string fin)
+    {
+        switch (fin)
+        {
+            case "locura":
+                totalocura++;
+                FinRonda.SetActive(false);
+                break;
+            case "puntos":
+                puntos = puntos + 4;
+                FinRonda.SetActive(false);
+                break;
+        }
+    }
 
 }
 
