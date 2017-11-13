@@ -182,18 +182,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21929362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141212015}
-        m_MethodName: valorComodin
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: verde
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &21929362
@@ -240,7 +229,7 @@ GameObject:
   - component: {fileID: 67635224}
   - component: {fileID: 67635223}
   m_Layer: 5
-  m_Name: locurajug1
+  m_Name: Text (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,66 +354,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &141212014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 141212016}
-  - component: {fileID: 141212015}
-  m_Layer: 0
-  m_Name: comodin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &141212015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 141212014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97bf93c10626644bb6e0556979e491b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hijos: []
-  hijosCarta: []
-  tipoMazo: 0
-  separacionx: 0
-  comodin: {fileID: 576011150}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
---- !u!4 &141212016
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 141212014}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160059593
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,22 +398,6 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 4
   separacionx: 8
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &195423526
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,18 +614,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 298473278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1928158186}
-        m_MethodName: finRonda
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: locura
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &298473278
@@ -822,18 +724,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 418386521}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141212015}
-        m_MethodName: valorComodin
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: azul
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &418386521
@@ -1334,22 +1225,6 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 6
   separacionx: 0
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &701560803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1236,7 @@ GameObject:
   - component: {fileID: 701560806}
   - component: {fileID: 701560805}
   m_Layer: 5
-  m_Name: puntosjug1
+  m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1690,22 +1565,6 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 5
   separacionx: 8
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &852969351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,22 +1609,6 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 0
   separacionx: 0
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &1183277030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,22 +1724,6 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 2
   separacionx: 13
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &1215977187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,7 +1735,7 @@ GameObject:
   - component: {fileID: 1215977190}
   - component: {fileID: 1215977189}
   m_Layer: 5
-  m_Name: puntosjug2
+  m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2163,22 +1990,6 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 3
   separacionx: 13
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &1267379825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,18 +2064,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1267379828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141212015}
-        m_MethodName: valorComodin
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: rosa
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1267379828
@@ -2311,7 +2111,7 @@ GameObject:
   - component: {fileID: 1319380038}
   - component: {fileID: 1319380037}
   m_Layer: 5
-  m_Name: locurajug2
+  m_Name: Text (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2418,22 +2218,6 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 1
   separacionx: 0
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 0}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &1649794092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,18 +2509,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820712543}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141212015}
-        m_MethodName: valorComodin
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: rojo
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1820712543
@@ -2994,18 +2767,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1919033162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141212015}
-        m_MethodName: valorComodin
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: amarillo
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1919033162
@@ -3041,66 +2803,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1919033159}
---- !u!1 &1928158184
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1928158185}
-  - component: {fileID: 1928158186}
-  m_Layer: 0
-  m_Name: FinRonda
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1928158185
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1928158184}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -683, y: -384, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2031674161}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1928158186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1928158184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97bf93c10626644bb6e0556979e491b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hijos: []
-  hijosCarta: []
-  tipoMazo: 0
-  separacionx: 0
-  comodin: {fileID: 0}
-  FinRonda: {fileID: 1183277030}
-  totalazul: 0
-  totalamarillo: 0
-  totalverde: 0
-  totalrojo: 0
-  totalrosa: 0
-  totalocura: 0
-  puntos: 0
-  totalazuljug2: 0
-  totalamarillojug2: 0
-  totalverdejug2: 0
-  totalrojojug2: 0
-  totalrosajug2: 0
-  totalocurajug2: 0
-  puntosjug2: 0
 --- !u!1 &1947583586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,18 +3095,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2020052534}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1928158186}
-        m_MethodName: finRonda
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: puntos
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2020052534
@@ -3531,7 +3222,6 @@ RectTransform:
   - {fileID: 576011151}
   - {fileID: 1183277031}
   - {fileID: 1971464387}
-  - {fileID: 1928158185}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

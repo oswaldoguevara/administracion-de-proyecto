@@ -7,23 +7,14 @@ public class Accion : MessageBase {
     public static short TipoMensaje = 80;  
     
     public int id; //para la carta enviada
+    public TipoMovimiento tipoMovimiento;
 
-<<<<<<< HEAD
+    public enum TipoMovimiento { Ninguno, Perdio, Gano, OrdenMazoJalar }
 
-   }
-
-public class Reparto: MessageBase {
-    public static short TipoMensaje = 81;
-    public int[] idcartasJugador;
-    public int[] idcartasOponente;
 }
-
-public class FinRonda: MessageBase
+public class Reparto: MessageBase
 {
-     //envia que desicion tomo el cliente con mas numero de locuras
-=======
-    
-
->>>>>>> 6e79db448154a5e45c0ef743b2dc44ee14cb7028
+    public static short TipoMensaje = 81;
+    public int[] idcartas;
 }
 

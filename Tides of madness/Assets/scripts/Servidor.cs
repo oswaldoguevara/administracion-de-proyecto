@@ -16,16 +16,14 @@ public class Servidor : MonoBehaviour
     private void Update()
     {
         if (!juegoiniciado)
-        {  
+        {
             if (obtenerNumeroConectados() == 2)
             {
                 Debug.Log("Ya estan los dos jugadores, que inicie el juego");
                 juegoiniciado = true;
 
                 //   FindObjectOfType<CambiarMenu>().cambiarEscena("juego");
-                //iniciar la escena juego en ambos clientes
                 Accion mensaje = new Accion();
-                //-1 para poder activar la escena 
                 mensaje.id = -1;
                 NetworkServer.SendToAll(Accion.TipoMensaje, mensaje);
             }
@@ -37,7 +35,6 @@ public class Servidor : MonoBehaviour
     public void enviaeMovimientoAlOtro(NetworkMessage mensajeRed)
     {
         Accion msj = mensajeRed.ReadMessage<Accion>();
-    //    Accion msj2 = mensajeRed.ReadMessage<Reparto>();
         foreach (NetworkConnection conn in NetworkServer.connections)
         {
             if (conn != null)
@@ -45,13 +42,11 @@ public class Servidor : MonoBehaviour
                 if (conn.connectionId != mensajeRed.conn.connectionId)
                 {
                     NetworkServer.SendToClient(conn.connectionId, Accion.TipoMensaje, msj);
-
                 }
-
             }
         }
     }
-    // conocer cuales es el numero de jugadores que se conecten
+
     int obtenerNumeroConectados()
     {
         int cuenta = 0;

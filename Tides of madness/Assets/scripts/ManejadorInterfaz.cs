@@ -56,10 +56,6 @@ public class ManejadorInterfaz : MonoBehaviour {
         
         
     }
-    // elegir locura o puntos
-    public void aparecerPanelFinRonda()
-    {
-        panelFinRonda.SetActive(true);
-    }
-   
+
+    
 }
