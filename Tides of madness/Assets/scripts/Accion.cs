@@ -4,8 +4,21 @@ using UnityEngine.Networking;
 
 public class Accion : MessageBase {
 
-    public static short TipoMensaje = 80;
-    public int id;
+    public static short TipoMensaje = 80;  
+    
+    public int id; //para la carta enviada
 
+
+   }
+
+public class Reparto: MessageBase {
+    public static short TipoMensaje = 81;
+    public int[] idcartasJugador;
+    public int[] idcartasOponente;
+}
+
+public class FinRonda: MessageBase
+{
+     //envia que desicion tomo el cliente con mas numero de locuras
 }
 

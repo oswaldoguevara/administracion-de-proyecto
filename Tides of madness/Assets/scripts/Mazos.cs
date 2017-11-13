@@ -101,7 +101,7 @@ public class Mazos : MonoBehaviour
             hijo.SetSiblingIndex(Random.Range(0, transform.childCount - 1));
         }
   }
-
+  
   
 
 

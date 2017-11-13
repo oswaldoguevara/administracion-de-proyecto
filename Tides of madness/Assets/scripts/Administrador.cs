@@ -8,15 +8,10 @@ public class Administrador : MonoBehaviour
 
     public GameObject prefabCarta;
     public GameObject prefabLocura;
- 
     public GameObject locuras;
-   
-    
     public GameObject[] cartas;
     //GUARDA LOS HIJOS
     public GameObject[] hijos;
-
- 
     public GameObject ultimacarta;
 
     //LISTA DE MAZO
@@ -36,31 +31,28 @@ public class Administrador : MonoBehaviour
         //manejador al cliente al servidor
     }
   
-  /*  public void hacerAccion(Accion hacer)
-    {
-        
-        Debug.Log("accion " + hacer);
-    }*/
 
-        public void recibirAccion(Accion recibido)
-    {
+
+        public void recibirAccion(Accion recibidoAccion)
+    {    
+        
+
         Carta[] cartas= mazoOponente.GetComponentsInChildren<Carta>();
+
+       
         foreach (Carta carta in cartas)
         {
-            if (carta.id == recibido.id)
+            if (carta.id == recibidoAccion.id)
             {
                 carta.transform.SetParent(tableroOponente.transform);
             }
         }
     }
 
+  
     public void intercambiarMazos()
     {
 
-   //     temporalJugadores = mazoJugador.ObtenerHijos();
-     //   temporalOponentes = mazoOponente.ObtenerHijos();
-
-        
 
         Carta[] cartasJugador = mazoJugador.GetComponentsInChildren<Carta>();
         Carta[] cartasOponente = mazoOponente.GetComponentsInChildren<Carta>();
@@ -75,11 +67,8 @@ public class Administrador : MonoBehaviour
             hijo.transform.SetParent(mazoJugador.transform);
             hijo.CambiarSpriteFrente();
         }
-
-
-
-
     }
+
     public void cerrarJuego()
     {
         Application.Quit();
@@ -132,20 +121,23 @@ public class Administrador : MonoBehaviour
 
     //PRIMER MOVIMIENTO DE MAZO JALAR AL MAZO DE CADA JUGADOR, REPARTE LAS PRIMERAS 5 CARTAS A CADA UNO
     public void jalarAjuadores()
-    {   //BARAJEA EL MAZOJALAR
+    {
+       
+        //BARAJEA EL MAZOJALAR
         mazoJalar.GetComponent<Mazos>().barajar();
 
 
         //OBTIENE LAS CARTAS DEL MAZO JALAR REVUELTO
         cartas = mazoJalar.GetComponent<Mazos>().ObtenerHijos();
 
-
+       
         for (int i = 0; i < 5; i++)
         {
 
             cartas[i].transform.SetParent(mazoJugador.transform);
             cartas[i].transform.position = mazoJugador.transform.position;
             cartas[i].GetComponent<Carta>().CambiarSpriteFrente();
+           
 
 
         }

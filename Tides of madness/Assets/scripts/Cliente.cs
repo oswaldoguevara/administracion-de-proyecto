@@ -28,14 +28,15 @@ public class Cliente : MonoBehaviour {
 
     public void hacerMovimiento(NetworkMessage mensajeRed)
     {
-        Accion mensaje= mensajeRed.ReadMessage<Accion>();
-        if (mensaje.id==-1)
+        Accion mensaje = mensajeRed.ReadMessage<Accion>();
+        if (mensaje.id == -1)
         {
             FindObjectOfType<CambiarMenu>().cambiarEscena("juego");
         }
        else
-        {
+        {    
             FindObjectOfType<Administrador>().recibirAccion(mensaje);
+          
         }
 
     }
