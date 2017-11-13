@@ -8,6 +8,7 @@ public class Accion : MessageBase {
     
     public int id; //para la carta enviada
 
+<<<<<<< HEAD
 
    }
 
@@ -20,5 +21,9 @@ public class Reparto: MessageBase {
 public class FinRonda: MessageBase
 {
      //envia que desicion tomo el cliente con mas numero de locuras
+=======
+    
+
+>>>>>>> 6e79db448154a5e45c0ef743b2dc44ee14cb7028
 }
 

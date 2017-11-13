@@ -121,11 +121,17 @@ public class Administrador : MonoBehaviour
 
     //PRIMER MOVIMIENTO DE MAZO JALAR AL MAZO DE CADA JUGADOR, REPARTE LAS PRIMERAS 5 CARTAS A CADA UNO
     public void jalarAjuadores()
+<<<<<<< HEAD
     {
        
         //BARAJEA EL MAZOJALAR
         mazoJalar.GetComponent<Mazos>().barajar();
 
+=======
+    {   //BARAJEA EL MAZOJALAR
+       mazoJalar.GetComponent<Mazos>().barajar();
+      
+>>>>>>> 6e79db448154a5e45c0ef743b2dc44ee14cb7028
 
         //OBTIENE LAS CARTAS DEL MAZO JALAR REVUELTO
         cartas = mazoJalar.GetComponent<Mazos>().ObtenerHijos();
@@ -151,7 +157,7 @@ public class Administrador : MonoBehaviour
 
             cartas[i].transform.SetParent(mazoOponente.transform);
             cartas[i].transform.position = mazoOponente.transform.position;
-            cartas[i].GetComponent<Carta>().CambiarSpriteAtras();
+            cartas[i].GetComponent<Carta>().CambiarSpriteFrente();
 
         }
 
