@@ -148,22 +148,32 @@ public class Mazos : MonoBehaviour
         {
             case "verde":
                 totalverde++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "azul":
                 totalazul++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "amarillo":
                 totalamarillo++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "rojo":
                 totalrojo++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "rosa":
                 totalrosa++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
         }
