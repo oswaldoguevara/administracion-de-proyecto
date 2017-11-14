@@ -23,9 +23,7 @@ public class Servidor : MonoBehaviour
                 juegoiniciado = true;
 
                 //   FindObjectOfType<CambiarMenu>().cambiarEscena("juego");
-                //iniciar la escena juego en ambos clientes
                 Accion mensaje = new Accion();
-                //-1 para poder activar la escena 
                 mensaje.id = -1;
                 NetworkServer.SendToAll(Accion.TipoMensaje, mensaje);
             }
@@ -48,7 +46,7 @@ public class Servidor : MonoBehaviour
             }
         }
     }
-    // conocer cuales es el numero de jugadores que se conecten
+
     int obtenerNumeroConectados()
     {
         int cuenta = 0;

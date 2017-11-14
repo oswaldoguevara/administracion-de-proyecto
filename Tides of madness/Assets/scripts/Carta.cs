@@ -14,18 +14,22 @@ public class Carta : MonoBehaviour
     public Mazos mazos;
 
     public bool seleccionada = false;
-
+    private void Update()
+    {
+        identificarCartas();
+    }
     public void CambiarSpriteFrente()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load(id + "", typeof(Sprite)) as Sprite;
-        identificarCartas();
+      
+
     }
 
 
     public void CambiarSpriteAtras()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("trasera", typeof(Sprite)) as Sprite;
-        identificarCartas();
+     
     }
     private void OnMouseDown()
     {
@@ -49,20 +53,7 @@ public class Carta : MonoBehaviour
                 Debug.Log("chale");
             }
         }
-        // SIMULADOR PARA LA SELECCION QUE HACE EL OPONENTE
-        if (mazos.tipoMazo == Mazos.TipoMazo.mazoOponente)
-        {
-
-
-            if (!seleccionada)
-            {
-                //Seleccionar
-                if (FindObjectOfType<Administrador>().AgregarASeleccion2(gameObject, true))
-                {
-                    SetSeleccionada(true);
-                }
-            }
-        }
+       
 
     }
     public void OnMouseOver()
