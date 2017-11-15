@@ -17,7 +17,7 @@ public class Administrador : MonoBehaviour
     //GUARDA LOS HIJOS
     public GameObject[] hijos;
 
-    bool cartasBarajeadas = false;
+    bool estanBarajeadas = false;
     public GameObject ultimacarta;
 
     //LISTA DE MAZO
@@ -26,12 +26,12 @@ public class Administrador : MonoBehaviour
     //DATOS PARTIDA
     public bool turnoJugador = true;
     public int ronda = 1;
-    public TipoMaquina tipoMaquina;
-    public enum TipoMaquina { Anfitrion, Invitado, Prueba }
+    public Jugador tipoJugador;
+    public enum Jugador { Host, Invitado}
     Cliente cliente;
     Servidor servidor;
 
-
+    Contador contador;
     void Awake()
     {
         aparecerCartas();
@@ -41,17 +41,23 @@ public class Administrador : MonoBehaviour
         //Obtener el cliete y servidor
         cliente = FindObjectOfType<Cliente>();
         servidor = FindObjectOfType<Servidor>();
-
+        contador = FindObjectOfType<Contador>();
 
         //Determinar que tipo de jugador es este
         DeterminarTipoJugador();
         DeterminarTurno();
         //manejador al cliente al servidor
         StartCoroutine(Juego());
-        StartCoroutine(RepartirAJugadoresAnimado());
-    }
-   
+      
 
+       
+    }
+    private void Start()
+    {
+        contador.hacerConteo();
+        StartCoroutine(RepartirAJugadores());
+
+    }
     IEnumerator Juego()
     {
         yield return new WaitForSeconds(1f);
@@ -59,43 +65,43 @@ public class Administrador : MonoBehaviour
         if (servidor == null && cliente == null)
         {
             mazoJalar.barajear();
-          
+
         }
 
-        //Si es ANFITRIÓN
-        if (tipoMaquina == TipoMaquina.Anfitrion)
+
+        if (tipoJugador == Jugador.Host)
         {
             //Revolver las cartas
             mazoJalar.barajear();
 
             yield return new WaitForEndOfFrame();
 
-            //Mandar orden de las cartas al otro cliente
+            //que hara el otro
             Accion mov = new Accion();
             mov.tipoMovimiento = Accion.TipoMovimiento.OrdenMazoJalar;
             cliente.enviarAccion(mov);
-           
+
         }
 
-        //Si es solo CLIENTE
-        if (tipoMaquina == TipoMaquina.Invitado)
+
+        if (tipoJugador == Jugador.Invitado)
         {
-            yield return new WaitUntil(() => cartasBarajeadas);
+            yield return new WaitUntil(() => estanBarajeadas);
         }
 
        
-       
+
 
         yield return new WaitForEndOfFrame();
     }
 
-    IEnumerator RepartirAJugadoresAnimado()
+    IEnumerator RepartirAJugadores()
     {
-       
+
         //Repartir al jugador
         foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
         {
-            if (tipoMaquina == TipoMaquina.Anfitrion)
+            if (tipoJugador == Jugador.Host)
             {
                 DarCartaAJugador(x);
             }
@@ -110,7 +116,7 @@ public class Administrador : MonoBehaviour
         //Repartir al oponente
         foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
         {
-            if (tipoMaquina == TipoMaquina.Anfitrion)
+            if (tipoJugador == Jugador.Host)
             {
                 DarCartaAOponente(x);
             }
@@ -122,29 +128,13 @@ public class Administrador : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
 
-      
+
 
         yield return new WaitForEndOfFrame();
     }
 
 
-    public void RepartirAJugadores()
-    {
-
-
-        //Repartir al jugador
-        foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
-        {
-            DarCartaAJugador(x);
-        }
-
-        //Repartir al oponente
-        foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
-        {
-            DarCartaAOponente(x);
-        }
-
-    }
+ 
     public void DarCartaAJugador(Carta carta)
     {
 
@@ -180,18 +170,18 @@ public class Administrador : MonoBehaviour
         if (servidor != null)
         {
             Debug.Log("Soy Host");
-            tipoMaquina = TipoMaquina.Anfitrion;
+            tipoJugador = Jugador.Host;
         }
         else
         {
             Debug.Log("Soy Invitado");
-            tipoMaquina = TipoMaquina.Invitado;
+            tipoJugador = Jugador.Invitado;
         }
     }
 
     public void DeterminarTurno()
     {
-        if (tipoMaquina == TipoMaquina.Anfitrion)
+        if (tipoJugador == Jugador.Host)
         {
             if (ronda == 1)
             {
@@ -202,7 +192,7 @@ public class Administrador : MonoBehaviour
                 turnoJugador = false;
             }
         }
-        else if (tipoMaquina == TipoMaquina.Invitado)
+        else if (tipoJugador == Jugador.Invitado)
         {
             if (ronda == 1)
             {
@@ -219,6 +209,7 @@ public class Administrador : MonoBehaviour
     public void recibirAccion(Accion recibido)
     {
         Carta[] cartas = mazoOponente.GetComponentsInChildren<Carta>();
+
         foreach (Carta carta in cartas)
         {
             if (carta.id == recibido.id)
@@ -228,7 +219,29 @@ public class Administrador : MonoBehaviour
 
 
             }
+         
         }
+    }
+    public void hacerLoQueMandaOponente(Accion acc)
+    {
+
+     //   Carta[] todasCartas = ObtenerTodasLasCartas();
+
+        switch (acc.tipoMovimiento)
+        {
+            case Accion.TipoMovimiento.OrdenMazoJalar:
+                mazoJalar.OrdenarCartasPorId(acc.idcartas);
+                estanBarajeadas = true;
+                break;
+          
+        }
+
+        if (acc.tipoMovimiento != Accion.TipoMovimiento.OrdenMazoJalar)
+        {
+            EmpezarTurno();
+        }
+       
+
     }
 
     public void intercambiarMazos()
@@ -254,6 +267,7 @@ public class Administrador : MonoBehaviour
     }
     public void cerrarJuego()
     {
+        FindObjectOfType<AdministradorRed>().TerminarConexion();
         Application.Quit();
     }
 
@@ -302,40 +316,7 @@ public class Administrador : MonoBehaviour
         return hijos;
     }
 
-    //PRIMER MOVIMIENTO DE MAZO JALAR AL MAZO DE CADA JUGADOR, REPARTE LAS PRIMERAS 5 CARTAS A CADA UNO
-    public void jalarAjuadores()
-    {   //BARAJEA EL MAZOJALAR
-        //   mazoJalar.GetComponent<Mazos>().barajar();
-
-
-        //OBTIENE LAS CARTAS DEL MAZO JALAR REVUELTO
-        cartas = mazoJalar.GetComponent<Mazos>().ObtenerHijos();
-
-
-        for (int i = 0; i < 5; i++)
-        {
-
-            cartas[i].transform.SetParent(mazoJugador.transform);
-            cartas[i].transform.position = mazoJugador.transform.position;
-            cartas[i].GetComponent<Carta>().CambiarSpriteFrente();
-
-
-        }
-        //MANDA A LLAMAR EL METODO DE MAZOS QUE BARAJEA
-
-        //LE ASIGNA OTROS HIJOS A CARTAS, LAS CARTAS QUE QUEDARON EN EL MAZO JALAR
-        cartas = mazoJalar.GetComponent<Mazos>().ObtenerHijos();
-
-        for (int i = 0; i < 5; i++)
-        {
-
-            cartas[i].transform.SetParent(mazoOponente.transform);
-            cartas[i].transform.position = mazoOponente.transform.position;
-            cartas[i].GetComponent<Carta>().CambiarSpriteAtras();
-
-        }
-
-    }
+  
     public Carta[] ObtenerTodasLasCartas()
     {
         return FindObjectsOfType<Carta>();

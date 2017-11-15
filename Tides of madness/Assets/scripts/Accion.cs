@@ -4,17 +4,14 @@ using UnityEngine.Networking;
 
 public class Accion : MessageBase {
 
-    public static short TipoMensaje = 80;  
+    public static short TIPO_MENSAJE = 80;  
     
     public int id; //para la carta enviada
+    public int[] idcartas; //para mandar las id ordenadas de las cartas ya barajeadas
     public TipoMovimiento tipoMovimiento;
 
     public enum TipoMovimiento { Ninguno, Perdio, Gano, OrdenMazoJalar }
 
 }
-public class Reparto: MessageBase
-{
-    public static short TipoMensaje = 81;
-    public int[] idcartas;
-}
+
 

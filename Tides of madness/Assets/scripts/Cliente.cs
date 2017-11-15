@@ -5,17 +5,17 @@ using UnityEngine;
 public class Cliente : MonoBehaviour {
 
     public NetworkClient cliente;
-
+ 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
-
+   
     public void ArrancarConexion(string ip,int puerto)
     {   
         cliente = new NetworkClient();
         cliente.RegisterHandler(MsgType.Connect, conectarse);
-        cliente.RegisterHandler(Accion.TipoMensaje,hacerMovimiento);
+        cliente.RegisterHandler(Accion.TIPO_MENSAJE,hacerMovimiento);
         cliente.Connect(ip,puerto);
        
 
@@ -42,6 +42,6 @@ public class Cliente : MonoBehaviour {
    
     public void enviarAccion(Accion hacer) //lo envia al servidor
     {
-        cliente.Send(Accion.TipoMensaje,hacer);
+        cliente.Send(Accion.TIPO_MENSAJE,hacer);
     }
 }

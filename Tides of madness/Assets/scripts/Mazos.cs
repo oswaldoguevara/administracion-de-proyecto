@@ -13,16 +13,12 @@ public class Mazos : MonoBehaviour
     public float separacionx;
     GameObject cartaSeleccionada;
     bool autoActualizarHijos = true;
-
-
-
+  
     void Awake()
     {
         hijos = ObtenerHijos();
 
-
-  
-}
+    }
 
     void Update()
     {  //MOVIMIENTO SUAVE DE LAS CARTAS
@@ -93,10 +89,53 @@ public class Mazos : MonoBehaviour
                 hijosCarta[x] = hijos[x].GetComponent<Carta>();
                 hijosCarta[x].mazos = GetComponent<Mazos>();
             }
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+    //carta comodin
+    public void valorComodin(string daenerys)
+    {
+        //nos da el nuevo color que sera la carta comodin
+        switch (daenerys)
+        {
+            case "verde":
+                totalverde++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
+                comodin.SetActive(false);
+                break;
+            case "azul":
+                totalazul++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
+                comodin.SetActive(false);
+                break;
+            case "amarillo":
+                totalamarillo++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
+                comodin.SetActive(false);
+                break;
+            case "rojo":
+                totalrojo++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
+                comodin.SetActive(false);
+                break;
+            case "rosa":
+                totalrosa++;
+                totalocura = totalocura + 1;
+                totalocurajug2 = totalocurajug2 - 1;
+                comodin.SetActive(false);
+                break;
+=======
+>>>>>>> origin/master
+>>>>>>> 59c6b54081329fd34c633a4f2378897cc7c09e38
         }
     }
 
+   
     /* public void barajar()
      {
          foreach (Transform hijo in transform)
@@ -161,39 +200,40 @@ public class Mazos : MonoBehaviour
 
        return estadoCartas.ToArray();
     }
+ 
 
-    public void OrdenarCartasPorId(int[] orden)
-    {
-        autoActualizarHijos = false;
+      public void OrdenarCartasPorId(int[] orden)
+       {
+           autoActualizarHijos = false;
 
-        //Obtener todas las cartas del juego
-        Carta[] todasCartas = FindObjectsOfType<Carta>();
+           //Obtener todas las cartas del juego
+           Carta[] todasCartas = FindObjectsOfType<Carta>();
 
-        //Sacar a todos los hijos del transform
-        foreach (Carta carta in todasCartas)
-        {
-            carta.transform.SetParent(null);
-        }
+           //Sacar a todos los hijos del transform
+           foreach (Carta carta in todasCartas)
+           {
+               carta.transform.SetParent(null);
+           }
 
-        //Agregar las cartas en el orden indicado
-        for (int x = 0; x < orden.Length; x++)
-        {
-            int idActual = orden[x];
-            foreach (Carta carta in todasCartas)
-            {
-                if (carta.id == idActual)
-                {
-                    carta.transform.SetParent(transform);
-                    carta.transform.SetSiblingIndex(x);
-                }
-            }
-        }
+           //Agregar las cartas en el orden indicado
+           for (int x = 0; x < orden.Length; x++)
+           {
+               int idActual = orden[x];
+               foreach (Carta carta in todasCartas)
+               {
+                   if (carta.id == idActual)
+                   {
+                       carta.transform.SetParent(transform);
+                       carta.transform.SetSiblingIndex(x);
+                   }
+               }
+           }
 
-        OnTransformChildrenChanged();
+           OnTransformChildrenChanged();
 
-        autoActualizarHijos = true;
-    }
-
+           autoActualizarHijos = true;
+       }
+       
     public int[] ObtenerOrdenPorId()
     {
         List<int> orden = new List<int>();
@@ -206,7 +246,7 @@ public class Mazos : MonoBehaviour
 
 
 
-    public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
+public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
 }
 
 

@@ -25,14 +25,14 @@ public class Servidor : MonoBehaviour
                 //   FindObjectOfType<CambiarMenu>().cambiarEscena("juego");
                 Accion mensaje = new Accion();
                 mensaje.id = -1;
-                NetworkServer.SendToAll(Accion.TipoMensaje, mensaje);
+                NetworkServer.SendToAll(Accion.TIPO_MENSAJE, mensaje);
             }
 
         }
     }
 
 
-    public void enviaeMovimientoAlOtro(NetworkMessage mensajeRed)
+    public void enviarMovimientoAlOtro(NetworkMessage mensajeRed)
     {
         Accion msj = mensajeRed.ReadMessage<Accion>();
         foreach (NetworkConnection conn in NetworkServer.connections)
@@ -41,7 +41,7 @@ public class Servidor : MonoBehaviour
             {
                 if (conn.connectionId != mensajeRed.conn.connectionId)
                 {
-                    NetworkServer.SendToClient(conn.connectionId, Accion.TipoMensaje, msj);
+                    NetworkServer.SendToClient(conn.connectionId, Accion.TIPO_MENSAJE, msj);
                 }
             }
         }
@@ -62,7 +62,7 @@ public class Servidor : MonoBehaviour
 
     public void crearServidor(int puerto)
     {
-        NetworkServer.RegisterHandler(Accion.TipoMensaje,enviaeMovimientoAlOtro);
+        NetworkServer.RegisterHandler(Accion.TIPO_MENSAJE,enviarMovimientoAlOtro);
         NetworkServer.Listen(puerto);
     }
 

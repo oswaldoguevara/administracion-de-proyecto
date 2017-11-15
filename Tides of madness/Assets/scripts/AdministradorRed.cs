@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Networking;
+//esta
 public class AdministradorRed : MonoBehaviour {
     public GameObject prefabCliete;
     public GameObject prefabServidor;
     int puerto= 8500;
     Servidor servidor;
     Cliente cliente;
-	
+    string ip = "";
+
     public void configurarComoHost()
     {
         servidor = Instantiate(prefabServidor).GetComponent<Servidor>();
@@ -18,9 +20,31 @@ public class AdministradorRed : MonoBehaviour {
         cliente.ArrancarConexion("localhost",puerto);
     }
 
-    public void configurarComoCliente(string ip)  //recibira como parametro lo del textfield de ip del servidor
+    public void setIP(string txt)
     {
-       cliente = Instantiate(prefabCliete).GetComponent<Cliente>();
-       cliente.ArrancarConexion(ip, puerto);  //LA IP SE OBTIENE DEL TEXTFIELD DE EL PANEL "192.168.0.15"
+        ip = txt;
+    }
+    public void configurarComoCliente()  //recibira como parametro lo del textfield de ip del servidor
+    {
+
+        cliente = Instantiate(prefabCliete).GetComponent<Cliente>();
+        cliente.ArrancarConexion(ip, puerto);  //LA IP SE OBTIENE DEL TEXTFIELD DE EL PANEL "192.168.0.15"
+    }
+
+    public void TerminarConexion()
+    {
+        Cliente[] clientes = FindObjectsOfType<Cliente>();
+        Servidor[] servidores = FindObjectsOfType<Servidor>();
+        if (clientes != null)
+        {
+            foreach (Cliente c in clientes) { Destroy(c.gameObject); }
+        }
+        if (servidores != null)
+        {
+            foreach (Servidor s in servidores) { Destroy(s.gameObject); }
+        }
+
+        NetworkServer.Shutdown();
+        NetworkClient.ShutdownAll();
     }
 }
