@@ -13,10 +13,30 @@ public class Mazos : MonoBehaviour
     public float separacionx;
     GameObject cartaSeleccionada;
     bool autoActualizarHijos = true;
-  
+    public GameObject comodin;
+
+    //Datos jugador para el contador
+    public int totalazul = 0;
+    public int totalamarillo = 0;
+    public int totalverde = 0;
+    public int totalrojo = 0;
+    public int totalrosa = 0;
+    public int totalocura = 0;
+    public int puntos = 0;
+    //datos jugador2 para el contador
+    public int totalazuljug2 = 0;
+    public int totalamarillojug2 = 0;
+    public int totalverdejug2 = 0;
+    public int totalrojojug2 = 0;
+    public int totalrosajug2 = 0;
+    public int totalocurajug2 = 0;
+    public int puntosjug2 = 0;
+
     void Awake()
     {
         hijos = ObtenerHijos();
+
+        Debug.Log("ya we");
 
     }
 
@@ -91,6 +111,8 @@ public class Mazos : MonoBehaviour
             }
         }
     }
+
+
 
    
     /* public void barajar()
@@ -203,7 +225,7 @@ public class Mazos : MonoBehaviour
 
 
 
-public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
+    public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
 }
 
 

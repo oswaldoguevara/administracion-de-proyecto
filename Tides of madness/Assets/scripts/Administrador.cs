@@ -321,7 +321,7 @@ public class Administrador : MonoBehaviour
     }
 
     //OBTIENE LOS HIJOS DENTRO
-    GameObject[] ObtenerHijos()
+   public GameObject[] ObtenerHijos()
     {
         GameObject[] hijos = new GameObject[transform.childCount];
         int cont = 0;

@@ -409,6 +409,23 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 4
   separacionx: 8
+  comodin: {fileID: 0}
+  totalazul: 0
+  totalamarillo: 0
+  totalverde: 0
+  totalrojo: 0
+  totalrosa: 0
+  totalocura: 0
+  puntos: 0
+  totalazuljug2: 0
+  totalamarillojug2: 0
+  totalverdejug2: 0
+  totalrojojug2: 0
+  totalrosajug2: 0
+  totalocurajug2: 0
+  puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &195423526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1264,23 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 6
   separacionx: 0
+  comodin: {fileID: 0}
+  totalazul: 0
+  totalamarillo: 0
+  totalverde: 0
+  totalrojo: 0
+  totalrosa: 0
+  totalocura: 0
+  puntos: 0
+  totalazuljug2: 0
+  totalamarillojug2: 0
+  totalverdejug2: 0
+  totalrojojug2: 0
+  totalrosajug2: 0
+  totalocurajug2: 0
+  puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &701560803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,8 +1686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hijos: []
   hijosCarta: []
-  mazoTableroJugador: {fileID: 1193629289}
-  mazoTableroOponente: {fileID: 1264874413}
+  tipoMazo: 0
   comodin: {fileID: 576011150}
   totalazul: 0
   totalamarillo: 0
@@ -1669,6 +1702,8 @@ MonoBehaviour:
   totalrosajug2: 0
   totalocurajug2: 0
   puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &827702037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1776,23 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 5
   separacionx: 8
+  comodin: {fileID: 0}
+  totalazul: 0
+  totalamarillo: 0
+  totalverde: 0
+  totalrojo: 0
+  totalrosa: 0
+  totalocura: 0
+  puntos: 0
+  totalazuljug2: 0
+  totalamarillojug2: 0
+  totalverdejug2: 0
+  totalrojojug2: 0
+  totalrosajug2: 0
+  totalocurajug2: 0
+  puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &852969351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,6 +1837,23 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 0
   separacionx: 0
+  comodin: {fileID: 0}
+  totalazul: 0
+  totalamarillo: 0
+  totalverde: 0
+  totalrojo: 0
+  totalrosa: 0
+  totalocura: 0
+  puntos: 0
+  totalazuljug2: 0
+  totalamarillojug2: 0
+  totalverdejug2: 0
+  totalrojojug2: 0
+  totalrosajug2: 0
+  totalocurajug2: 0
+  puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &1183277030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,6 +1969,23 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 2
   separacionx: 13
+  comodin: {fileID: 0}
+  totalazul: 0
+  totalamarillo: 0
+  totalverde: 0
+  totalrojo: 0
+  totalrosa: 0
+  totalocura: 0
+  puntos: 0
+  totalazuljug2: 0
+  totalamarillojug2: 0
+  totalverdejug2: 0
+  totalrojojug2: 0
+  totalrosajug2: 0
+  totalocurajug2: 0
+  puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &1215977187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,6 +2252,23 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 3
   separacionx: 13
+  comodin: {fileID: 0}
+  totalazul: 0
+  totalamarillo: 0
+  totalverde: 0
+  totalrojo: 0
+  totalrosa: 0
+  totalocura: 0
+  puntos: 0
+  totalazuljug2: 0
+  totalamarillojug2: 0
+  totalverdejug2: 0
+  totalrojojug2: 0
+  totalrosajug2: 0
+  totalocurajug2: 0
+  puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &1267379825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,6 +2508,23 @@ MonoBehaviour:
   hijosCarta: []
   tipoMazo: 1
   separacionx: 0
+  comodin: {fileID: 0}
+  totalazul: 0
+  totalamarillo: 0
+  totalverde: 0
+  totalrojo: 0
+  totalrosa: 0
+  totalocura: 0
+  puntos: 0
+  totalazuljug2: 0
+  totalamarillojug2: 0
+  totalverdejug2: 0
+  totalrojojug2: 0
+  totalrosajug2: 0
+  totalocurajug2: 0
+  puntosjug2: 0
+  doble: 0
+  dobleoponente: 0
 --- !u!1 &1578422015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,6 +3626,7 @@ RectTransform:
   - {fileID: 1183277031}
   - {fileID: 1971464387}
   - {fileID: 737871766}
+  - {fileID: 2092323309}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3514,6 +3635,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2092323308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2092323309}
+  m_Layer: 5
+  m_Name: comodin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2092323309
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2092323308}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2031674161}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 16}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2146413141
 GameObject:
   m_ObjectHideFlags: 0
