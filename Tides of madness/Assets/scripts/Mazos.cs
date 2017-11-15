@@ -13,10 +13,30 @@ public class Mazos : MonoBehaviour
     public float separacionx;
     GameObject cartaSeleccionada;
     bool autoActualizarHijos = true;
-  
+    public GameObject comodin;
+
+    //Datos jugador para el contador
+    public int totalazul = 0;
+    public int totalamarillo = 0;
+    public int totalverde = 0;
+    public int totalrojo = 0;
+    public int totalrosa = 0;
+    public int totalocura = 0;
+    public int puntos = 0;
+    //datos jugador2 para el contador
+    public int totalazuljug2 = 0;
+    public int totalamarillojug2 = 0;
+    public int totalverdejug2 = 0;
+    public int totalrojojug2 = 0;
+    public int totalrosajug2 = 0;
+    public int totalocurajug2 = 0;
+    public int puntosjug2 = 0;
+
     void Awake()
     {
         hijos = ObtenerHijos();
+
+        Debug.Log("ya we");
 
     }
 
@@ -89,54 +109,10 @@ public class Mazos : MonoBehaviour
                 hijosCarta[x] = hijos[x].GetComponent<Carta>();
                 hijosCarta[x].mazos = GetComponent<Mazos>();
             }
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-    //carta comodin
-    public void valorComodin(string daenerys)
-    {
-        //nos da el nuevo color que sera la carta comodin
-        switch (daenerys)
-        {
-            case "verde":
-                totalverde++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "azul":
-                totalazul++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "amarillo":
-                totalamarillo++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "rojo":
-                totalrojo++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "rosa":
-                totalrosa++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-=======
->>>>>>> origin/master
-<<<<<<< HEAD
->>>>>>> 59c6b54081329fd34c633a4f2378897cc7c09e38
-=======
->>>>>>> 59c6b54081329fd34c633a4f2378897cc7c09e38
         }
     }
+
+
 
    
     /* public void barajar()
@@ -249,7 +225,7 @@ public class Mazos : MonoBehaviour
 
 
 
-public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
+    public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
 }
 
 
