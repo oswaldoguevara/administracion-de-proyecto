@@ -46,7 +46,7 @@ public class Carta : MonoBehaviour
             else if (!seleccionada)
             {
                 //Seleccionar
-                if (FindObjectOfType<Administrador>().AgregarASeleccion(gameObject, true))
+                if (FindObjectOfType<Administrador>().SeleccionarCarta(gameObject, true))
                 {
                     SetSeleccionada(true);
                 }

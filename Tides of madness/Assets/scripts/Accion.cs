@@ -8,9 +8,9 @@ public class Accion : MessageBase {
     
     public int id; //para la carta enviada
     public int[] idcartas; //para mandar las id ordenadas de las cartas ya barajeadas
-    public TipoMovimiento tipoMovimiento;
+    public TipoAccion tipoAccion;
 
-    public enum TipoMovimiento { Ninguno, Perdio, Gano, OrdenMazoJalar }
+    public enum TipoAccion { Ninguno, Perdio, Gano, OrdenMazoJalar }
 
 }
 

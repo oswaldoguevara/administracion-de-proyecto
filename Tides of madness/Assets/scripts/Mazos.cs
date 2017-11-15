@@ -89,52 +89,6 @@ public class Mazos : MonoBehaviour
                 hijosCarta[x] = hijos[x].GetComponent<Carta>();
                 hijosCarta[x].mazos = GetComponent<Mazos>();
             }
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-    //carta comodin
-    public void valorComodin(string daenerys)
-    {
-        //nos da el nuevo color que sera la carta comodin
-        switch (daenerys)
-        {
-            case "verde":
-                totalverde++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "azul":
-                totalazul++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "amarillo":
-                totalamarillo++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "rojo":
-                totalrojo++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-            case "rosa":
-                totalrosa++;
-                totalocura = totalocura + 1;
-                totalocurajug2 = totalocurajug2 - 1;
-                comodin.SetActive(false);
-                break;
-=======
->>>>>>> origin/master
-<<<<<<< HEAD
->>>>>>> 59c6b54081329fd34c633a4f2378897cc7c09e38
-=======
->>>>>>> 59c6b54081329fd34c633a4f2378897cc7c09e38
         }
     }
 

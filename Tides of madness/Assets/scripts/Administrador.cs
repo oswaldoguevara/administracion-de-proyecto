@@ -47,57 +47,64 @@ public class Administrador : MonoBehaviour
         DeterminarTipoJugador();
         DeterminarTurno();
         //manejador al cliente al servidor
-        StartCoroutine(Juego());
+       
       
 
        
     }
     private void Start()
     {
+        StartCoroutine(Juego());
         contador.hacerConteo();
-        StartCoroutine(RepartirAJugadores());
+        
 
     }
     IEnumerator Juego()
     {
+        Accion acc = new Accion();
+        acc.tipoAccion = Accion.TipoAccion.OrdenMazoJalar;
+        acc.idcartas = mazoJalar.ObtenerOrdenPorId();
         yield return new WaitForSeconds(1f);
 
+       
         if (servidor == null && cliente == null)
         {
             mazoJalar.barajear();
-
         }
 
-
-        if (tipoJugador == Jugador.Host)
+        
+        if (tipoJugador==Jugador.Host)
         {
-            //Revolver las cartas
             mazoJalar.barajear();
 
             yield return new WaitForEndOfFrame();
 
-            //que hara el otro
-            Accion mov = new Accion();
-            mov.tipoMovimiento = Accion.TipoMovimiento.OrdenMazoJalar;
-            cliente.enviarAccion(mov);
+            //Mandar orden de las cartas al otro cliente
+           
+            cliente.enviarAccion(acc);
 
+            
         }
 
-
-        if (tipoJugador == Jugador.Invitado)
+        //Si es solo CLIENTE
+        if (tipoJugador==Jugador.Invitado)
         {
+            EjecutarMovimientoOponente(acc);
             yield return new WaitUntil(() => estanBarajeadas);
         }
+             
 
+        //Repartir sus 5 cartas a los jugadores
+        StartCoroutine(RepartirAJugadoresAnimado());
+        Debug.Log("CARTAS ENTREGADAS CORRECTAMENTE!");
        
-
 
         yield return new WaitForEndOfFrame();
     }
 
-    IEnumerator RepartirAJugadores()
+    IEnumerator RepartirAJugadoresAnimado()
     {
-
+       
         //Repartir al jugador
         foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
         {
@@ -116,7 +123,7 @@ public class Administrador : MonoBehaviour
         //Repartir al oponente
         foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
         {
-            if (tipoJugador == Jugador.Host)
+            if (tipoJugador==Jugador.Host)
             {
                 DarCartaAOponente(x);
             }
@@ -128,13 +135,29 @@ public class Administrador : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
 
-
+      
 
         yield return new WaitForEndOfFrame();
     }
 
+    public void RepartirCartasAJugadores()
+    {
+      
 
- 
+        //Repartir al jugador
+        foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
+        {
+            DarCartaAJugador(x);
+        }
+
+        //Repartir al oponente
+        foreach (Carta x in mazoJalar.ObtenerUltimasCartas(5))
+        {
+            DarCartaAOponente(x);
+        }
+
+    }
+
     public void DarCartaAJugador(Carta carta)
     {
 
@@ -222,26 +245,21 @@ public class Administrador : MonoBehaviour
          
         }
     }
-    public void hacerLoQueMandaOponente(Accion acc)
+    public void EjecutarMovimientoOponente(Accion acc)
     {
 
-     //   Carta[] todasCartas = ObtenerTodasLasCartas();
 
-        switch (acc.tipoMovimiento)
+        
+        switch (acc.tipoAccion)
         {
-            case Accion.TipoMovimiento.OrdenMazoJalar:
+            case Accion.TipoAccion.OrdenMazoJalar:
                 mazoJalar.OrdenarCartasPorId(acc.idcartas);
                 estanBarajeadas = true;
                 break;
-          
-        }
 
-        if (acc.tipoMovimiento != Accion.TipoMovimiento.OrdenMazoJalar)
-        {
-            EmpezarTurno();
-        }
-       
+              
 
+        }
     }
 
     public void intercambiarMazos()
@@ -333,10 +351,13 @@ public class Administrador : MonoBehaviour
         }
         return null;
     }
-    public bool AgregarASeleccion(GameObject objeto, bool checarSeleccion)
+    public bool SeleccionarCarta(GameObject objeto, bool checarSeleccion)
     {
 
-
+        if (!turnoJugador)
+        {
+            return false;
+        }
         Carta carta = objeto.GetComponent<Carta>();
 
 
