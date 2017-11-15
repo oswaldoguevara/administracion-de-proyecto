@@ -131,6 +131,9 @@ public class Mazos : MonoBehaviour
                 break;
 =======
 >>>>>>> origin/master
+<<<<<<< HEAD
+>>>>>>> 59c6b54081329fd34c633a4f2378897cc7c09e38
+=======
 >>>>>>> 59c6b54081329fd34c633a4f2378897cc7c09e38
         }
     }
