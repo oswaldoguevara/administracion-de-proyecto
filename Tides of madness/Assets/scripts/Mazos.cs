@@ -13,30 +13,10 @@ public class Mazos : MonoBehaviour
     public float separacionx;
     GameObject cartaSeleccionada;
     bool autoActualizarHijos = true;
-    public GameObject comodin;
-
-    //Datos jugador para el contador
-    public int totalazul = 0;
-    public int totalamarillo = 0;
-    public int totalverde = 0;
-    public int totalrojo = 0;
-    public int totalrosa = 0;
-    public int totalocura = 0;
-    public int puntos = 0;
-    //datos jugador2 para el contador
-    public int totalazuljug2 = 0;
-    public int totalamarillojug2 = 0;
-    public int totalverdejug2 = 0;
-    public int totalrojojug2 = 0;
-    public int totalrosajug2 = 0;
-    public int totalocurajug2 = 0;
-    public int puntosjug2 = 0;
-
+  
     void Awake()
     {
         hijos = ObtenerHijos();
-
-        Debug.Log("ya we");
 
     }
 
@@ -112,8 +92,6 @@ public class Mazos : MonoBehaviour
         }
     }
 
-
-
    
     /* public void barajar()
      {
@@ -162,6 +140,7 @@ public class Mazos : MonoBehaviour
 
     public Carta[] barajear()
     {
+        Debug.Log("Se hace el barajeo de cartas");
         autoActualizarHijos = false;
         List<Carta> estadoCartas = new List<Carta>();
 
@@ -183,6 +162,7 @@ public class Mazos : MonoBehaviour
 
       public void OrdenarCartasPorId(int[] orden)
        {
+        string ordenfinal = "EL ORDEN DE CARTAS QUEDÓ ASI: ";
            autoActualizarHijos = false;
 
            //Obtener todas las cartas del juego
@@ -204,10 +184,11 @@ public class Mazos : MonoBehaviour
                    {
                        carta.transform.SetParent(transform);
                        carta.transform.SetSiblingIndex(x);
+                    ordenfinal += orden + carta.name+"  -  ";
                    }
                }
            }
-
+        Debug.Log(ordenfinal);
            OnTransformChildrenChanged();
 
            autoActualizarHijos = true;
@@ -215,17 +196,20 @@ public class Mazos : MonoBehaviour
        
     public int[] ObtenerOrdenPorId()
     {
+        string ordenIDs = "EL ORDEN DE CARTAS ES: ";
         List<int> orden = new List<int>();
         foreach (Transform hijo in transform)
         {
             orden.Add(hijo.GetComponent<Carta>().id);
+            ordenIDs = ordenIDs + hijo.GetComponent<Carta>().id+"  -  ";
         }
+        Debug.Log(ordenIDs); //muestra el ids de cartas y en su orden revuelto
         return orden.ToArray();
     }
 
 
 
-    public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
+public enum TipoMazo { mazoJalar, mazoDejar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoVacio, locuras }
 }
 
 

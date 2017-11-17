@@ -6,7 +6,6 @@ public class Contador : MonoBehaviour {
     //Arreglo que contiene los hijos de este objeto (osea las cartas)
     public GameObject[] hijos;
     public Carta[] hijosCarta;
-    public TipoMazo tipoMazo = TipoMazo.mazoJalar;
     public GameObject mazoTableroJugador;
     public GameObject mazoTableroOponente;
 
@@ -50,7 +49,7 @@ public class Contador : MonoBehaviour {
             contadorjug2(hijo);
         }
     }
-   public GameObject[] ObtenerHijos()
+    public GameObject[] ObtenerHijos()
     {
         GameObject[] hijos = new GameObject[transform.childCount];
         int i = 0;
@@ -65,6 +64,9 @@ public class Contador : MonoBehaviour {
     }
 
 
+    
+ 
+
     //carta comodin
     public void valorComodin(string daenerys)
     {
@@ -73,74 +75,34 @@ public class Contador : MonoBehaviour {
         {
             case "verde":
                 totalverde++;
-                
-                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "azul":
                 totalazul++;
-                
-                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "amarillo":
                 totalamarillo++;
-               
-                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "rojo":
                 totalrojo++;
-                
-                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
             case "rosa":
                 totalrosa++;
-                
-                totalocurajug2 = totalocurajug2 - 1;
                 comodin.SetActive(false);
                 break;
 
-        }
-    }
-    //carta comodin
-    public void valorComodiOponente(string daenerys)
-    {
-        //nos da el nuevo color que sera la carta comodin
-        switch (daenerys)
-        {
-            case "verde":
-                totalverdejug2++;
-                totalocura = totalocura - 1;
-                comodin.SetActive(false);
-                break;
-            case "azul":
-                totalazuljug2++;
-                totalocura = totalocura - 1;
-                comodin.SetActive(false);
-                break;
-            case "amarillo":
-                totalamarillojug2++;
-                totalocura = totalocura - 1;
-                comodin.SetActive(false);
-                break;
-            case "rojo":
-                totalrojojug2++;
-                totalocura = totalocura - 1;
-                comodin.SetActive(false);
-                break;
-            case "rosa":
-                totalrosajug2++;
-                totalocura = totalocura - 1;
-                comodin.SetActive(false);
-                break;
+
+
+
         }
     }
     //Suma los puntos de las cartas en el tablero
     public void sumapuntos(GameObject hijo)
     {
-        if (tipoMazo == TipoMazo.mazoJugador)
+        if (mazoTableroJugador)
         {
             string id = hijo.name.ToString();
 
@@ -238,7 +200,7 @@ public class Contador : MonoBehaviour {
     }
     public void sumapuntosjug2(GameObject hijo)
     {
-        if (tipoMazo == TipoMazo.mazoOponente)
+        if (mazoTableroOponente)
         {
             string id = hijo.name.ToString();
 
@@ -324,12 +286,10 @@ public class Contador : MonoBehaviour {
 
     }
 
-    public int doble = 0;
-    public int dobleoponente = 0;
     //conteo de cartas de los dos jugadores
     public void contador(GameObject hijo)
     {
-        if (tipoMazo == TipoMazo.mazoJugador)
+        if (mazoTableroJugador)
         {
             string id = hijo.name.ToString();
             switch (id)
@@ -338,14 +298,12 @@ public class Contador : MonoBehaviour {
                     int habilidad = 0;
                     habilidad = totalazul * 3;
                     puntos = puntos + habilidad;
-                    doble = habilidad;
                     break;
 
                 case "1":
                     if ((totalazul >= 1) && (totalamarillo >= 1) && (totalrojo >= 1) && (totalrosa >= 1) && (totalverde >= 1))
                     {
                         puntos = puntos + 13;
-                        doble = 13;
                     }
                     break;
 
@@ -353,20 +311,17 @@ public class Contador : MonoBehaviour {
                     if (totalrojo > totalrojojug2)
                     {
                         puntos = puntos + 7;
-                        doble = 7;
                     }
                     break;
 
                 case "3":
                     puntos = puntos + totalocura;
-                    doble = totalocura;
                     break;
 
                 case "4":
                     if (totalamarillo > totalamarillojug2)
                     {
                         puntos = puntos + 7;
-                        doble = 7;
                     }
                     break;
 
@@ -374,21 +329,18 @@ public class Contador : MonoBehaviour {
                     int habilidad5 = 0;
                     habilidad5 = totalrojo * 3;
                     puntos = puntos + habilidad5;
-                    doble = habilidad5;
                     break;
 
                 case "6":
                     int habilidad6 = 0;
                     habilidad6 = totalverde * 3;
                     puntos = puntos + habilidad6;
-                    doble = habilidad6;
                     break;
 
                 case "7":
                     if (totalrosa > totalrosajug2)
                     {
                         puntos = puntos + 7;
-                        doble = 7;
                     }
                     break;
 
@@ -398,19 +350,16 @@ public class Contador : MonoBehaviour {
                     {
                         habilidad8 = totalrosa * 9;
                         puntos = puntos + habilidad8;
-                        doble = habilidad8;
                     }
                     else if ((totalrojo >= totalamarillo) && (totalrojo >= totalrosa) && (totalrosa >= totalamarillo))
                     {
                         habilidad8 = totalamarillo * 9;
                         puntos = puntos + habilidad8;
-                        doble = habilidad8;
                     }
                     else if ((totalrosa >= totalamarillo) && (totalrosa >= totalrojo) && (totalamarillo >= totalrojo))
                     {
                         habilidad8 = totalrojo * 9;
                         puntos = puntos + habilidad8;
-                        doble = habilidad8;
                     }
                     break;
 
@@ -418,43 +367,34 @@ public class Contador : MonoBehaviour {
                     int habilidad9 = 0;
                     habilidad9 = totalrosa * 3;
                     puntos = puntos + habilidad9;
-                    doble = habilidad9;
                     break;
 
                 case "10":
                     if (totalrojo < 1)
                     {
                         puntos = puntos + 3;
-                        doble = doble + 3;
                     }
                     if (totalazul < 1)
                     {
                         puntos = puntos + 3;
-                        doble = doble + 3;
                     }
                     if (totalrosa < 1)
                     {
                         puntos = puntos + 3;
-                        doble = doble + 3;
                     }
                     if (totalverde < 1)
                     {
                         puntos = puntos + 3;
-                        doble = doble + 3;
                     }
                     if (totalamarillo < 1)
                     {
                         puntos = puntos + 3;
-                        doble = doble + 3;
                     }
                     break;
 
                 case "11":
                     if (totalazul > totalazuljug2)
-                    {
                         puntos = puntos + 7;
-                        doble = 7;
-                    }
                     break;
 
                 case "12":
@@ -471,28 +411,22 @@ public class Contador : MonoBehaviour {
                     if (totalamarillo > totalamarillojug2)
                     {
                         puntos = puntos + 4;
-                        doble = doble + 4;
                     }
                     if (totalverde > totalverdejug2)
                     {
                         puntos = puntos + 4;
-                        doble = doble + 4;
-
                     }
                     if (totalazul > totalazuljug2)
                     {
                         puntos = puntos + 4;
-                        doble = doble + 4;
                     }
                     if (totalrojo > totalrojojug2)
                     {
                         puntos = puntos + 4;
-                        doble = doble + 4;
                     }
                     if (totalrosa > totalrosajug2)
                     {
                         puntos = puntos + 4;
-                        doble = doble + 4;
                     }
 
                     break;
@@ -501,14 +435,12 @@ public class Contador : MonoBehaviour {
                     int habilidad15 = 0;
                     habilidad15 = totalamarillo * 3;
                     puntos = puntos + habilidad15;
-                    doble = habilidad15;
                     break;
 
                 case "16":
                     if (totalverde > totalverdejug2)
                     {
                         puntos = puntos + 7;
-                        doble = 7;
                     }
                     break;
                 //fallo
@@ -517,18 +449,12 @@ public class Contador : MonoBehaviour {
                     if (totalverde >= totalazul)
                     {
                         habilidad17 = totalazul * 6;
-                        puntos = puntos + habilidad17;
-                        doble = habilidad17;
-
-
                     }
                     else
                     {
                         habilidad17 = totalverde * 6;
-                        puntos = puntos + habilidad17;
-                        doble = habilidad17;
                     }
-                    
+                    puntos = puntos + habilidad17;
                     break;
 
             }
@@ -544,7 +470,7 @@ public class Contador : MonoBehaviour {
 
     public void contadorjug2(GameObject hijo)
     {
-        if (tipoMazo == TipoMazo.mazoOponente)
+        if (mazoTableroOponente)
         {
             string id = hijo.name.ToString();
 
@@ -555,14 +481,12 @@ public class Contador : MonoBehaviour {
                     int habilidad = 0;
                     habilidad = totalazuljug2 * 3;
                     puntosjug2 = puntosjug2 + habilidad;
-                    dobleoponente = habilidad;
                     break;
 
                 case "1":
                     if (totalazuljug2 >= 1 && totalamarillojug2 >= 1 && totalrojojug2 >= 1 && totalrosajug2 >= 1 && totalverdejug2 >= 1)
                     {
                         puntosjug2 = puntosjug2 + 13;
-                        dobleoponente = 13;
                     }
                     break;
 
@@ -570,20 +494,17 @@ public class Contador : MonoBehaviour {
                     if (totalrojojug2 > totalrojo)
                     {
                         puntosjug2 = puntosjug2 + 7;
-                        dobleoponente = 7;
                     }
                     break;
 
                 case "3":
                     puntosjug2 = puntosjug2 + totalocurajug2;
-                    dobleoponente = totalocurajug2;
                     break;
 
                 case "4":
                     if (totalamarillojug2 > totalamarillo)
                     {
                         puntosjug2 = puntosjug2 + 7;
-                        dobleoponente = 7;
                     }
                     break;
 
@@ -591,21 +512,18 @@ public class Contador : MonoBehaviour {
                     int habilidad5 = 0;
                     habilidad5 = totalrojojug2 * 3;
                     puntosjug2 = puntosjug2 + habilidad5;
-                    dobleoponente = habilidad5;
                     break;
 
                 case "6":
                     int habilidad6 = 0;
                     habilidad6 = totalverdejug2 * 3;
                     puntosjug2 = puntosjug2 + habilidad6;
-                    dobleoponente = habilidad6;
                     break;
 
                 case "7":
                     if (totalrosajug2 > totalrosa)
                     {
                         puntosjug2 = puntosjug2 + 7;
-                        dobleoponente = 7;
                     }
                     break;
 
@@ -615,19 +533,16 @@ public class Contador : MonoBehaviour {
                     {
                         habilidad8 = totalrosajug2 * 9;
                         puntosjug2 = puntosjug2 + habilidad8;
-                        dobleoponente = habilidad8;
                     }
                     else if (totalrojojug2 >= totalamarillojug2 && totalrojojug2 >= totalrosajug2 && totalrosajug2 >= totalamarillojug2)
                     {
                         habilidad8 = totalamarillojug2 * 9;
                         puntosjug2 = puntosjug2 + habilidad8;
-                        dobleoponente = habilidad8;
                     }
                     else if (totalrosajug2 >= totalamarillojug2 && totalrosajug2 >= totalrojojug2 && totalamarillojug2 >= totalrojojug2)
                     {
                         habilidad8 = totalrojojug2 * 9;
                         puntosjug2 = puntosjug2 + habilidad8;
-                        dobleoponente = habilidad8;
                     }
                     break;
 
@@ -635,53 +550,42 @@ public class Contador : MonoBehaviour {
                     int habilidad9 = 0;
                     habilidad9 = totalrosajug2 * 3;
                     puntosjug2 = puntosjug2 + habilidad9;
-                    dobleoponente = habilidad9;
                     break;
 
                 case "10":
                     if (totalrojojug2 < 1)
                     {
                         puntosjug2 = puntosjug2 + 3;
-                        dobleoponente = dobleoponente +3;
                     }
                     if (totalazuljug2 < 1)
-                        dobleoponente = 3;
                     {
                         puntosjug2 = puntosjug2 + 3;
-                        dobleoponente = dobleoponente+ 3;
                     }
                     if (totalrosajug2 < 1)
                     {
                         puntosjug2 = puntosjug2 + 3;
-                        dobleoponente = dobleoponente + 3;
                     }
                     if (totalverdejug2 < 1)
                     {
                         puntosjug2 = puntosjug2 + 3;
-                        dobleoponente = dobleoponente+  3;
                     }
                     if (totalamarillojug2 < 1)
                     {
                         puntosjug2 = puntosjug2 + 3;
-                        dobleoponente = dobleoponente +3;
                     }
                     break;
 
                 case "11":
                     if (totalazuljug2 > totalazul)
-                    {
                         puntosjug2 = puntosjug2 + 7;
-                        dobleoponente = 7;
-                    }
                     break;
 
                 case "12":
                     totalocurajug2 = totalocurajug2 + 1;
-
                     break;
 
                 case "13":
-                    puntosjug2 = puntosjug2 + dobleoponente;
+                    // falta esta
                     break;
 
                 case "14":
@@ -689,27 +593,22 @@ public class Contador : MonoBehaviour {
                     if (totalamarillojug2 > totalamarillo)
                     {
                         puntosjug2 = puntosjug2 + 4;
-                        dobleoponente = dobleoponente + 4;
                     }
                     if (totalverdejug2 > totalverde)
                     {
                         puntosjug2 = puntosjug2 + 4;
-                        dobleoponente = dobleoponente + 4;
                     }
                     if (totalazuljug2 > totalazul)
                     {
                         puntosjug2 = puntosjug2 + 4;
-                        dobleoponente = dobleoponente + 4;
                     }
                     if (totalrojojug2 > totalrojo)
                     {
                         puntosjug2 = puntosjug2 + 4;
-                        dobleoponente = dobleoponente + 4;
                     }
                     if (totalrosajug2 > totalrosa)
                     {
                         puntosjug2 = puntosjug2 + 4;
-                        dobleoponente = dobleoponente + 4;
                     }
 
                     break;
@@ -718,14 +617,12 @@ public class Contador : MonoBehaviour {
                     int habilidad15 = 0;
                     habilidad15 = totalamarillojug2 * 3;
                     puntosjug2 = puntosjug2 + habilidad15;
-                    dobleoponente = habilidad15;
                     break;
 
                 case "16":
                     if (totalverdejug2 > totalverde)
                     {
                         puntosjug2 = puntosjug2 + 7;
-                        dobleoponente = 7;
                     }
                     break;
 
@@ -734,16 +631,12 @@ public class Contador : MonoBehaviour {
                     if (totalverdejug2 > totalazuljug2)
                     {
                         habilidad17 = totalazuljug2 * 6;
-                        puntosjug2 = puntosjug2 + habilidad17;
-                        dobleoponente = habilidad17; 
                     }
                     else
                     {
                         habilidad17 = totalverdejug2 * 6;
-                        puntosjug2 = puntosjug2 + habilidad17;
-                        dobleoponente = habilidad17;
                     }
-                    
+                    puntosjug2 = puntosjug2 + habilidad17;
                     break;
 
             }

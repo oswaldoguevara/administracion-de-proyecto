@@ -24,7 +24,7 @@ public class Servidor : MonoBehaviour
 
                 //   FindObjectOfType<CambiarMenu>().cambiarEscena("juego");
                 Accion mensaje = new Accion();
-                mensaje.id = -1;
+                mensaje.tipoAccion = Accion.TipoAccion.iniciarJuego;
                 NetworkServer.SendToAll(Accion.TIPO_MENSAJE, mensaje);
             }
 
