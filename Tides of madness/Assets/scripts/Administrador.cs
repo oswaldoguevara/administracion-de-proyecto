@@ -18,16 +18,21 @@ public class Administrador : MonoBehaviour
     public GameObject[] hijos;
 
     bool estanBarajeadas = false;
-    public GameObject ultimacarta;
+
 
     //LISTA DE MAZO
-    public Mazos mazoJalar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoDejar, mazoVacio;
+    public Mazo mazoJalar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoDejar, mazoVacio;
 
     //DATOS PARTIDA
     public bool turnoJugador = true;
     public int ronda = 1;
+    bool hostGana;
+    bool invitadoGana;
+    bool hostPierde;
+    bool invitadoPierde;
+
     public Jugador tipoJugador;
-    public enum Jugador { Host, Invitado}
+    public enum Jugador { Host, Invitado} //para saber si creó la partida o se unió
     Cliente cliente;
     Servidor servidor;
 
@@ -55,12 +60,35 @@ public class Administrador : MonoBehaviour
     private void Start()
     {
         StartCoroutine(InciarJuego());
-         StartCoroutine(RepartirAJugadoresAnimado());// se supone que solo va en el iniciador juego
-      
-     
-
-
+        StartCoroutine(RepartirAJugadoresAnimado());// se supone que solo va en el iniciador juego
+        accionesFinRonda();
     }
+    public void accionesFinRonda()
+    {
+        if ((AprobarCambioMazosJugadores() == true)&&(tableroJugador.contarCartasEnMazo()>1))
+        {
+            intercambiarMazos();
+        }
+        else
+        {
+            Debug.Log("AUN NO ESTAN AMBAS CARTAS PUESTAS");
+        }
+    }
+    public bool AprobarCambioMazosJugadores()
+    {   
+        if (tableroJugador.contarCartasEnMazo()==tableroOponente.contarCartasEnMazo())  //si ambos jugadores ya pusieron cartas
+        {
+            //validar que se mayor a 1 porque puede que sean 0==0 y se cambia mazo
+                return true;
+                  
+        }
+        else{
+          
+            return false; //que no estan aun las dos cartas puestas
+        }
+          
+    }
+
     IEnumerator InciarJuego()
     {
         Accion acc = new Accion();
@@ -115,8 +143,8 @@ public class Administrador : MonoBehaviour
             {
                 DarCartaAOponente(x);
             }
+              yield return new WaitForSeconds(0.3f);
 
-            yield return new WaitForSeconds(0.3f);
         }
 
         //Repartir al oponente
@@ -130,8 +158,7 @@ public class Administrador : MonoBehaviour
             {
                 DarCartaAJugador(x);
             }
-
-            yield return new WaitForSeconds(0.3f);
+             yield return new WaitForSeconds(0.3f);
         }
 
       
@@ -343,6 +370,7 @@ public class Administrador : MonoBehaviour
     {
         return FindObjectsOfType<Carta>();
     }
+
     public Carta ObtenerCartaPorId(int id)
     {
         Carta[] todasCartas = ObtenerTodasLasCartas();
@@ -357,35 +385,21 @@ public class Administrador : MonoBehaviour
     }
     public bool SeleccionarCarta(GameObject objeto, bool checarSeleccion)
     {
-
-        if (!turnoJugador)
-        {
-            return false;
-        }
+        
         Carta carta = objeto.GetComponent<Carta>();
-
-
         carta.SetSeleccionada(true);
-
 
         //CAMBIA LA CARTA DEL MAZO JUG A EL MAZO TABLERO
         objeto.transform.SetParent(tableroJugador.transform); //cambia el padre, de mazo
         carta.GetComponent<Carta>().CambiarSpriteAtras();
         carta.transform.localScale = new Vector2(1.8f, 1.8f); //cambiar scale de la carta
-        ultimacarta = objeto;
+     
         //mandar carta al cliente
         Accion ac = new Accion();
-        ac.id = ultimacarta.GetComponent<Carta>().id;
+        ac.id = carta.GetComponent<Carta>().id;
         FindObjectOfType<Cliente>().enviarAccion(ac);
 
         return true;
-
-
-
     }
-
-
-
-
 }
 

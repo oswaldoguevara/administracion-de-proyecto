@@ -11,7 +11,7 @@ public class Carta : MonoBehaviour
     public int locuras;
     public string color;
     public string texto;
-    public Mazos mazos;
+    public Mazo mazos;
 
     public bool seleccionada = false;
     private void Update()
@@ -34,23 +34,16 @@ public class Carta : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (mazos.tipoMazo == Mazos.TipoMazo.mazoJugador)
+        if (mazos.tipoMazo == Mazo.TipoMazo.mazoJugador)
         {
-
-
-            if (seleccionada)
-            {
-
-                SetSeleccionada(false);
-            }
-            else if (!seleccionada)
+           
+            if (!seleccionada)
             {
                 //Seleccionar
                 if (FindObjectOfType<Administrador>().SeleccionarCarta(gameObject, true))
                 {
                     SetSeleccionada(true);
                 }
-                Debug.Log("chale");
             }
         }
        
@@ -58,7 +51,7 @@ public class Carta : MonoBehaviour
     }
     public void OnMouseOver()
     {
-        if (mazos.tipoMazo == Mazos.TipoMazo.mazoJugador)
+        if (mazos.tipoMazo == Mazo.TipoMazo.mazoJugador)
         {
             FindObjectOfType<ManejadorInterfaz>().aparecerPanelCarta(true, texto);
         }
