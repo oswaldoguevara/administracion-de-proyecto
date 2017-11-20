@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.Networking;
+
 //esta
 public class AdministradorRed : MonoBehaviour {
     public GameObject prefabCliete;
@@ -10,9 +12,11 @@ public class AdministradorRed : MonoBehaviour {
     Servidor servidor;
     Cliente cliente;
     string ip = "";
-
+  
     public void configurarComoHost()
     {
+        TerminarConexion();
+
         servidor = Instantiate(prefabServidor).GetComponent<Servidor>();
         cliente = Instantiate(prefabCliete).GetComponent<Cliente>();
 
@@ -26,10 +30,12 @@ public class AdministradorRed : MonoBehaviour {
     }
     public void configurarComoCliente()  //recibira como parametro lo del textfield de ip del servidor
     {
-
-        cliente = Instantiate(prefabCliete).GetComponent<Cliente>();
-        cliente.ArrancarConexion(ip, puerto);  //LA IP SE OBTIENE DEL TEXTFIELD DE EL PANEL "192.168.0.15"
-    }
+        TerminarConexion();
+      
+           
+            cliente = Instantiate(prefabCliete).GetComponent<Cliente>();
+            cliente.ArrancarConexion(ip, puerto);  //LA IP SE OBTIENE DEL TEXTFIELD DE EL PANEL "192.168.0.15"
+        }
 
     public void TerminarConexion()
     {

@@ -9,12 +9,8 @@ public class Administrador : MonoBehaviour
 
     public GameObject prefabCarta;
     public GameObject prefabLocura;
-
     public GameObject locuras;
-
-
     public GameObject[] cartas;
-    //GUARDA LOS HIJOS
     public GameObject[] hijos;
 
     bool estanBarajeadas = false;
@@ -24,7 +20,7 @@ public class Administrador : MonoBehaviour
     public Mazo mazoJalar, mazoJugador, mazoOponente, tableroJugador, tableroOponente, mazoDejar, mazoVacio;
 
     //DATOS PARTIDA
-    public bool turnoJugador = true;
+    public bool turnoJugadores = true;
     public int ronda = 1;
     bool hostGana;
     bool invitadoGana;
@@ -42,7 +38,7 @@ public class Administrador : MonoBehaviour
         aparecerCartas();
         aparecerLocuras();
         hijos = ObtenerHijos();
-        //jalarAjuadores();
+      
         //Obtener el cliete y servidor
         cliente = FindObjectOfType<Cliente>();
         servidor = FindObjectOfType<Servidor>();
@@ -61,12 +57,13 @@ public class Administrador : MonoBehaviour
     {
         StartCoroutine(InciarJuego());
         StartCoroutine(RepartirAJugadoresAnimado());// se supone que solo va en el iniciador juego
-        accionesFinRonda();
+        
     }
+   
     public void accionesFinRonda()
     {
         if ((AprobarCambioMazosJugadores() == true)&&(tableroJugador.contarCartasEnMazo()>1))
-        {
+        {   
             intercambiarMazos();
         }
         else
@@ -79,11 +76,12 @@ public class Administrador : MonoBehaviour
         if (tableroJugador.contarCartasEnMazo()==tableroOponente.contarCartasEnMazo())  //si ambos jugadores ya pusieron cartas
         {
             //validar que se mayor a 1 porque puede que sean 0==0 y se cambia mazo
-                return true;
+           
+            return true;
                   
         }
         else{
-          
+     
             return false; //que no estan aun las dos cartas puestas
         }
           
@@ -200,19 +198,11 @@ public class Administrador : MonoBehaviour
         carta.GetComponent<Carta>().CambiarSpriteAtras();
     }
 
-    public void TerminarTurno()
-    {
-        turnoJugador = false;
-
-    }
-
     public void EmpezarTurno()
     {
-        turnoJugador = true;
+        turnoJugadores = true;
 
     }
-
-
 
     public void DeterminarTipoJugador()
     {
@@ -230,31 +220,18 @@ public class Administrador : MonoBehaviour
 
     public void DeterminarTurno()
     {
-        if (tipoJugador == Jugador.Host)
+        if (tableroJugador.contarCartasEnMazo() == tableroOponente.contarCartasEnMazo())  //si ambos ya pusieron o ambos no han puesto 
         {
-            if (ronda == 1)
-            {
-                turnoJugador = true;
-            }
-            else
-            {
-                turnoJugador = false;
-            }
+            turnoJugadores = true;
+            Debug.Log("PUEDEN PONER CARTA");
         }
-        else if (tipoJugador == Jugador.Invitado)
+        else
         {
-            if (ronda == 1)
-            {
-                turnoJugador = false;
-            }
-            else
-            {
-                turnoJugador = true;
-            }
+            turnoJugadores = false;
+            Debug.Log(" NO PUEDEN PONER CARTA");
         }
 
-    }
-
+        }
     public void recibirAccion(Accion recibido)
     {
         Carta[] cartas = mazoOponente.GetComponentsInChildren<Carta>();
@@ -266,7 +243,7 @@ public class Administrador : MonoBehaviour
                 carta.transform.SetParent(tableroOponente.transform);
                 carta.transform.localScale = new Vector2(1.8f, 1.8f);
 
-
+                turnoJugadores = true;
             }
          
         }
@@ -319,7 +296,6 @@ public class Administrador : MonoBehaviour
         FindObjectOfType<AdministradorRed>().TerminarConexion();
         Application.Quit();
     }
-
     public void aparecerCartas()
     {
         int id = 0;
@@ -336,7 +312,6 @@ public class Administrador : MonoBehaviour
             id++;
         }
     }
-
     public void aparecerLocuras()
     {
         for (int l = 0; l < 20; l++) //aparece las locuras
@@ -350,8 +325,6 @@ public class Administrador : MonoBehaviour
 
         }
     }
-
-    //OBTIENE LOS HIJOS DENTRO
     GameObject[] ObtenerHijos()
     {
         GameObject[] hijos = new GameObject[transform.childCount];
@@ -364,13 +337,10 @@ public class Administrador : MonoBehaviour
         }
         return hijos;
     }
-
-  
     public Carta[] ObtenerTodasLasCartas()
     {
         return FindObjectsOfType<Carta>();
     }
-
     public Carta ObtenerCartaPorId(int id)
     {
         Carta[] todasCartas = ObtenerTodasLasCartas();
@@ -383,23 +353,35 @@ public class Administrador : MonoBehaviour
         }
         return null;
     }
-    public bool SeleccionarCarta(GameObject objeto, bool checarSeleccion)
+
+    public bool SeleccionarCarta(GameObject objeto)
     {
+  
+      
+        //Revisar si es el turno del jugador
+        if (turnoJugadores==true)
+        {
+            Carta carta = objeto.GetComponent<Carta>();
+            carta.SetSeleccionada(true);
+
+            //CAMBIA LA CARTA DEL MAZO JUG A EL MAZO TABLERO
+            objeto.transform.SetParent(tableroJugador.transform); //cambia el padre, de mazo
+            carta.GetComponent<Carta>().CambiarSpriteAtras();   //voltea la carta
+            carta.transform.localScale = new Vector2(1.8f, 1.8f); //cambiar scale de la carta
+
+            //mandar carta al cliente
+            Accion ac = new Accion();
+            ac.id = carta.GetComponent<Carta>().id;
+            FindObjectOfType<Cliente>().enviarAccion(ac);
+       
+           
+
+
+        }
         
-        Carta carta = objeto.GetComponent<Carta>();
-        carta.SetSeleccionada(true);
-
-        //CAMBIA LA CARTA DEL MAZO JUG A EL MAZO TABLERO
-        objeto.transform.SetParent(tableroJugador.transform); //cambia el padre, de mazo
-        carta.GetComponent<Carta>().CambiarSpriteAtras();
-        carta.transform.localScale = new Vector2(1.8f, 1.8f); //cambiar scale de la carta
-     
-        //mandar carta al cliente
-        Accion ac = new Accion();
-        ac.id = carta.GetComponent<Carta>().id;
-        FindObjectOfType<Cliente>().enviarAccion(ac);
-
         return true;
+
+
     }
 }
 

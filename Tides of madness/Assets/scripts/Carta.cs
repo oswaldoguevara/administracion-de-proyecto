@@ -31,16 +31,16 @@ public class Carta : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("trasera", typeof(Sprite)) as Sprite;
      
     }
-    private void OnMouseDown()
+    private void OnMouseDown() //click en la carta
     {
 
         if (mazos.tipoMazo == Mazo.TipoMazo.mazoJugador)
         {
-           
+
             if (!seleccionada)
             {
                 //Seleccionar
-                if (FindObjectOfType<Administrador>().SeleccionarCarta(gameObject, true))
+                if (FindObjectOfType<Administrador>().SeleccionarCarta(gameObject))
                 {
                     SetSeleccionada(true);
                 }
@@ -49,7 +49,7 @@ public class Carta : MonoBehaviour
        
 
     }
-    public void OnMouseOver()
+    public void OnMouseOver() //pasar el cursor por la carta
     {
         if (mazos.tipoMazo == Mazo.TipoMazo.mazoJugador)
         {
@@ -57,7 +57,7 @@ public class Carta : MonoBehaviour
         }
 
     }
-    private void OnMouseExit()
+    private void OnMouseExit() //sale el cursos de la carta
     {
         FindObjectOfType<ManejadorInterfaz>().esconderPanelCarta();
     }

@@ -79,11 +79,9 @@ public class Mazo : MonoBehaviour
             int i = 0;
             foreach (Transform hijo in transform)
             {
-               
                 i++;
-
-
             }
+        Debug.Log("NUMERO DE CARTAS EN EL MAZO: "+i);
             return i;
         
     }
