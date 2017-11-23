@@ -1,0 +1,28 @@
+Para ejecutar el juego en la mejor calidad posible se recomienda seguir las siguientes instrucciones:
+
+1.- Después de leer el disco, selecciona el icono que dice TIDES OF MADNESS.exe que es 
+    el ejecutador del juego, también puedes crear un acceso directo de el en tu escritorio.
+
+2.- Te abrirá una pequeña ventana con la configuración personalizada para que adaptes el 
+    juego en diferentes tamaños.
+
+3.- Se recomienda que en la pestaña de Graphics en el checkbox de “Windowed” lo dejes 
+    deseleccionado.
+
+4.- En “Screen resolution”, ajustarlo a 1366x768 que para ese tamaño fue diseñado el 
+    juego.
+
+5.- Y listo, presiona el botón Play! Y disfruta el juego. Suerte!
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+INSTRUCCIONES PARA OBTENER LA IP EL JUGADOR QUE CREA LA PARTIDA
+ Para que puedas tener un juego con otro jugador es necesario que ambos estén conectados 
+ dentro de una misma red ya sea LAN o de Internet.
+
+1.- En la barra de búsqueda de Windows ingresa “Símbolo del Sistema” y abres la primera 
+    opción que aparezca, a continuación se abrirá una ventana con fondo color negro.
+2.- Escribes el siguiente comando “ipconfig” y presionas enter. Aparecerá cierta información.
+3.- Busca la línea que diga “Dirección IPv4”, esta te guiara a una serie de números(ejemplo: 192.168.1.50)
+    que estos deberás de proporcionarle al otro jugador para que lo ingrese en el panel de unirse a partida.
+
