@@ -56,7 +56,7 @@ public class Administrador : MonoBehaviour
     private void Start()
     {
         StartCoroutine(InciarJuego());
-        StartCoroutine(RepartirAJugadoresAnimado());// se supone que solo va en el iniciador juego
+        StartCoroutine(RepartirAJugadoresMovimientoDividido());// se supone que solo va en el iniciador juego
         
     }
    
@@ -127,7 +127,7 @@ public class Administrador : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
     }
-    IEnumerator RepartirAJugadoresAnimado()
+    IEnumerator RepartirAJugadoresMovimientoDividido()
     {
        
         //Repartir al jugador
